@@ -1,0 +1,417 @@
+name: Commit Analysis
+
+on:
+    push: # Run on every push to the repository
+    workflow_dispatch: # Keep manual trigger option
+
+jobs:
+    analyze-commits:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0 # Fetch all history for all branches and tags
+                  path: current-repo
+
+            - name: Checkout target repository
+              uses: actions/checkout@v3
+              with:
+                  repository: CS561-OSU/lab3-target
+                  path: target-repo
+
+            - name: Set up Python
+              uses: actions/setup-python@v4
+              with:
+                  python-version: "3.10"
+
+            - name: Install dependencies
+              run: |
+                  pip install pytz
+
+            - name: Compare repositories and analyze commits
+              run: |
+                  # Start building the runtime summary (without visualization)
+                  echo "# Lab 3 Repository Analysis Report" >> $GITHUB_STEP_SUMMARY
+                  echo "Generated on: $(date -u)" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+
+                  # Perform repository comparison and commit analysis
+                  cd current-repo
+                  python - <<EOF >> $GITHUB_STEP_SUMMARY
+                  import subprocess
+                  import re
+                  import datetime
+                  import pytz
+                  import os
+                  import sys
+                  import difflib
+                  import glob
+
+                  def run_git_command(cmd, default=""):
+                      """Run a git command safely and return output or default on error"""
+                      try:
+                          result = subprocess.run(cmd, capture_output=True, text=True)
+                          if result.returncode == 0:
+                              return result.stdout.strip()
+                          else:
+                              return default
+                      except Exception as e:
+                          return f"{default} (Error: {str(e)})"
+
+                  # Repository comparison section
+                  print("## Repository Comparison")
+                  print("Comparing current repository with CS561-OSU/lab3-target")
+                  print()
+
+                  # Get the path to both repositories
+                  current_repo_path = os.path.abspath('.')
+                  target_repo_path = os.path.abspath('../target-repo')
+
+                  # Get list of files in both repositories (excluding dot files)
+                  def get_files(repo_path):
+                      files = []
+                      for root, dirs, filenames in os.walk(repo_path):
+                          # Skip dot directories
+                          dirs[:] = [d for d in dirs if not d.startswith('.')]
+                          for filename in filenames:
+                              # Skip dot files
+                              if not filename.startswith('.'):
+                                  full_path = os.path.join(root, filename)
+                                  rel_path = os.path.relpath(full_path, repo_path)
+                                  files.append(rel_path)
+                      return files
+
+                  current_files = get_files(current_repo_path)
+                  target_files = get_files(target_repo_path)
+
+                  # Find common files
+                  common_files = set(current_files).intersection(set(target_files))
+
+                  # Calculate and display similarity for each common file
+                  print("### File Similarity Analysis")
+                  print()
+                  print("| File | Similarity % | Status |")
+                  print("|------|-------------|--------|")
+
+                  total_similarity = 0
+                  file_count = 0
+
+                  for file in sorted(common_files):
+                      # Skip binary files and very large files
+                      if file.endswith(('.png', '.jpg', '.jpeg', '.gif', '.pdf', '.zip', '.gz', '.tar')):
+                          continue
+                          
+                      try:
+                          # Read file contents from both repositories
+                          with open(os.path.join(current_repo_path, file), 'r', encoding='utf-8') as f:
+                              current_content = f.readlines()
+                          
+                          with open(os.path.join(target_repo_path, file), 'r', encoding='utf-8') as f:
+                              target_content = f.readlines()
+                          
+                          # Calculate similarity ratio (ignoring whitespace)
+                          current_content_clean = [line.strip() for line in current_content]
+                          target_content_clean = [line.strip() for line in target_content]
+                          
+                          similarity = difflib.SequenceMatcher(None, 
+                                                              '\n'.join(current_content_clean), 
+                                                              '\n'.join(target_content_clean)).ratio() * 100
+                          
+                          status = "Identical" if similarity > 99.9 else \
+                                  "Very Similar" if similarity > 90 else \
+                                  "Similar" if similarity > 70 else \
+                                  "Somewhat Similar" if similarity > 50 else \
+                                  "Different"
+                          
+                          print(f"| {file} | {similarity:.2f}% | {status} |")
+                          
+                          total_similarity += similarity
+                          file_count += 1
+                          
+                      except Exception as e:
+                          print(f"| {file} | Error | Could not compare: {str(e)} |")
+
+                  # Print files that exist only in one repository
+                  only_in_current = set(current_files) - set(target_files)
+                  only_in_target = set(target_files) - set(current_files)
+
+                  print()
+                  print("### Unique Files")
+                  print()
+
+                  if only_in_current:
+                      print("Files only in current repository:")
+                      for file in sorted(only_in_current):
+                          print(f"- {file}")
+                      print()
+
+                  if only_in_target:
+                      print("Files only in target repository:")
+                      for file in sorted(only_in_target):
+                          print(f"- {file}")
+                      print()
+
+                  # Calculate average similarity
+                  if file_count > 0:
+                      avg_similarity = total_similarity / file_count
+                      print(f"### Overall Repository Similarity: {avg_similarity:.2f}%")
+                      print()
+
+                  # Commit analysis (without visualization)
+                  # Get all commits with author information
+                  commits_raw = run_git_command(['git', 'log', '--pretty=format:%H|%an|%ae|%s|%D'], "")
+                  commits = commits_raw.split('\n') if commits_raw else []
+
+                  # Handle the case where git command returns a single commit
+                  if isinstance(commits, str) and commits:
+                      commits = [commits]
+
+                  # Initialize counters and data structures
+                  total_commits = len(commits)
+
+                  # Skip processing if no commits
+                  if total_commits == 0:
+                      print("No commits found in repository or error accessing git history.")
+                      sys.exit(0)
+
+                  commit_lengths = []
+                  pattern_matches = 0
+                  pattern = re.compile(r'(feature|bugfix|bug|fix|feat|hotfix|release)/[\w-]+')
+
+                  # For author stats
+                  authors = {}
+
+                  # For merge/rebase/cherry-pick stats
+                  merge_commits = 0
+                  rebase_commits = 0
+                  cherry_pick_commits = 0
+
+                  # List to store all commit information
+                  all_commits_info = []
+
+                  # Analyze each commit
+                  for commit in commits:
+                      if not commit:  # Skip empty lines
+                          continue
+                          
+                      parts = commit.split('|')
+                      if len(parts) >= 4:
+                          commit_hash = parts[0]
+                          author_name = parts[1]
+                          author_email = parts[2]
+                          commit_msg = parts[3]
+                          ref_names = parts[4] if len(parts) > 4 else ""
+                          
+                          # Store complete commit info
+                          all_commits_info.append({
+                              "hash": commit_hash,
+                              "author": author_name,
+                              "email": author_email,
+                              "message": commit_msg,
+                              "refs": ref_names
+                          })
+                          
+                          # Add commit message length
+                          commit_lengths.append(len(commit_msg))
+                          
+                          # Check if commit follows the pattern
+                          if pattern.search(commit_msg):
+                              pattern_matches += 1
+                          
+                          # Update author stats
+                          author_key = f"{author_name} <{author_email}>"
+                          if author_key not in authors:
+                              authors[author_key] = {
+                                  "count": 0,
+                                  "commits": []
+                              }
+                          
+                          authors[author_key]["count"] += 1
+                          authors[author_key]["commits"].append({
+                              "hash": commit_hash[:8],  # Short hash
+                              "message": commit_msg,
+                              "type": "merge" if commit_msg.startswith('Merge ') else
+                                    "rebase" if 'rebase' in commit_msg.lower() else
+                                    "cherry-pick" if re.search(r'cherry[ -]pick', commit_msg.lower()) else
+                                    "pattern" if pattern.search(commit_msg) else "regular"
+                          })
+                          
+                          # Check for merge/rebase/cherry-pick
+                          if commit_msg.startswith('Merge '):
+                              merge_commits += 1
+                          elif 'rebase' in commit_msg.lower():
+                              rebase_commits += 1
+                          elif re.search(r'cherry[ -]pick', commit_msg.lower()):
+                              cherry_pick_commits += 1
+
+                  # Calculate statistics
+                  if commit_lengths:
+                      avg_length = sum(commit_lengths) / len(commit_lengths)
+                      max_length = max(commit_lengths)
+                      min_length = min(commit_lengths)
+                  else:
+                      avg_length = max_length = min_length = 0
+
+                  # Sort authors by commit count
+                  sorted_authors = sorted(authors.items(), key=lambda item: item[1]["count"], reverse=True)
+
+                  # Generate current time
+                  now = datetime.datetime.now(pytz.UTC).strftime("%Y-%m-%d %H:%M:%S UTC")
+
+                  # Summary section
+                  print("## Commit Statistics")
+                  print(f"- Total commits: {total_commits}")
+                  if total_commits > 0:
+                      print(f"- Commits following pattern (feature/xxx, bugfix/xxx, etc.): {pattern_matches} ({pattern_matches/total_commits*100:.2f}%)")
+                  else:
+                      print(f"- Commits following pattern (feature/xxx, bugfix/xxx, etc.): 0 (0.00%)")
+                  print(f"- Average commit message length: {avg_length:.2f} characters")
+                  print(f"- Shortest commit message: {min_length} characters")
+                  print(f"- Longest commit message: {max_length} characters")
+                  print()
+
+                  # Commit types
+                  print("## Commit Types")
+                  print(f"- Merge commits: {merge_commits}")
+                  print(f"- Rebase-related commits: {rebase_commits}")
+                  print(f"- Cherry-picked commits: {cherry_pick_commits}")
+                  print()
+
+                  # Author Contribution Summary
+                  print("## Author Contribution Summary")
+                  print()
+                  print("| Author | Email | Commits |")
+                  print("|--------|-------|---------|")
+
+                  for author, stats in sorted_authors:
+                      name = author.split(" <")[0]
+                      email = author.split("<")[1].rstrip(">")
+                      print(f"| {name} | {email} | {stats['count']} |")
+
+                  print()
+
+                  # Author Commit Details
+                  print("## Author Commit Details")
+                  print()
+
+                  for author, stats in sorted_authors:
+                      print(f"### {author} - {stats['count']} commits")
+                      print()
+                      
+                      # Group commits by type
+                      commit_types = {
+                          "merge": [],
+                          "rebase": [],
+                          "cherry-pick": [],
+                          "pattern": [],
+                          "regular": []
+                      }
+                      
+                      for commit in stats["commits"]:
+                          commit_types[commit["type"]].append(commit)
+                      
+                      # Write commits by type
+                      for type_name, type_label in [
+                          ("merge", "Merge Commits"),
+                          ("rebase", "Rebase Commits"),
+                          ("cherry-pick", "Cherry-Pick Commits"),
+                          ("pattern", "Pattern Matching Commits"),
+                          ("regular", "Regular Commits")
+                      ]:
+                          if commit_types[type_name]:
+                              print(f"#### {type_label}")
+                              print()
+                              for i, commit in enumerate(commit_types[type_name], 1):
+                                  print(f"{i}. [`{commit['hash']}`] {commit['message']}")
+                              print()
+
+                  # All Commits Chronologically
+                  print("## All Commits (Chronological Order)")
+                  print()
+                  print(f"Total: {len(all_commits_info)} commits")
+                  print()
+
+                  # Limit to first 50 commits to avoid summary size limits
+                  display_commits = all_commits_info[:min(50, len(all_commits_info))]
+
+                  for i, commit in enumerate(display_commits, 1):
+                      commit_type = "Merge" if commit["message"].startswith('Merge ') else \
+                                  "Rebase" if 'rebase' in commit["message"].lower() else \
+                                  "Cherry-pick" if re.search(r'cherry[ -]pick', commit["message"].lower()) else \
+                                  "Pattern" if pattern.search(commit["message"]) else "Regular"
+                      
+                      print(f"{i}. **[{commit_type}]** `{commit['hash'][:8]}` - {commit['author']} <{commit['email']}>")
+                      print(f"   {commit['message']}")
+                      if commit["refs"]:
+                          print(f"   *Refs: {commit['refs']}*")
+                      print()
+
+                  if len(all_commits_info) > 50:
+                      print(f"... and {len(all_commits_info) - 50} more commits not shown")
+                      
+                  # Save visualization data for post-summary report
+                  with open('../visualization-data.py', 'w') as f:
+                      f.write(f"all_commits_info = {repr(all_commits_info)}\n")
+                      f.write(f"pattern = r'{pattern.pattern}'\n")
+                  EOF
+
+            - name: Generate visualization in console output
+              run: |
+                  echo "# Repository Visualization"
+                  echo "```"
+
+                  python - <<EOF
+                  import os
+                  import re
+                  import sys
+
+                  # Load visualization data
+                  visualization_data = {}
+                  try:
+                      with open('visualization-data.py', 'r') as f:
+                          exec(f.read(), visualization_data)
+                      
+                      all_commits_info = visualization_data.get('all_commits_info', [])
+                      pattern_str = visualization_data.get('pattern', r'(feature|bugfix|bug|fix|feat|hotfix|release)/[\w-]+')
+                      pattern = re.compile(pattern_str)
+                  except Exception as e:
+                      all_commits_info = []
+                      pattern = re.compile(r'(feature|bugfix|bug|fix|feat|hotfix|release)/[\w-]+')
+                      print(f"Error loading visualization data: {str(e)}")
+                      sys.exit(0)
+
+                  # Create visualization
+                  print("Commit History:")
+
+                  # Simplify visualization to avoid Git command failures
+                  for i, commit in enumerate(all_commits_info[:20], 1):  # Show the first 20 commits
+                      commit_type = "Merge" if commit["message"].startswith('Merge ') else \
+                                  "Rebase" if 'rebase' in commit["message"].lower() else \
+                                  "Cherry-pick" if re.search(r'cherry[ -]pick', commit["message"].lower()) else \
+                                  "Pattern" if pattern.search(commit["message"]) else "Regular"
+                      
+                      if commit_type == "Merge":
+                          prefix = "●"
+                      elif commit_type == "Cherry-pick" or commit_type == "Rebase":
+                          prefix = "◆"
+                      elif commit_type == "Pattern":
+                          prefix = "★"
+                      else:
+                          prefix = "○"
+                          
+                      print(f"{prefix} {commit['hash'][:7]} - {commit['message'][:50]} ({commit['author']})")
+                      print("|")
+
+                  if len(all_commits_info) > 20:
+                      print(f"... and {len(all_commits_info) - 20} more commits")
+                  EOF
+
+                  echo "```"
+                  echo ""
+                  echo "Legend:"
+                  echo "- ● Merge commits"
+                  echo "- ◆ Rebase/Cherry-pick commits" 
+                  echo "- ★ Pattern matching commits (feature/xxx, bugfix/xxx, etc.)"
+                  echo "- ○ Regular commits"
