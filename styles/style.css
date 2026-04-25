@@ -34,7 +34,7 @@
   }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .disabled {
@@ -273,4 +273,72 @@
 change cursor to pointer */
 .float-btn:hover {
 cursor: pointer;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR FORMS
+*************************************************************************/
+
+.fm-primary-btn {
+    width:70%; 
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 36px;
+    color: var(--text-color);
+    background-color: var(--main-color);
+}
+
+.fm-profile-pic {
+    padding-bottom: 8px;
+}
+
+.centered {
+    text-align: center;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR DIALOGS
+*************************************************************************/
+
+.dialog-primary-btn {
+    width:35%; 
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 8px;
+    font-size: 24px;
+    color: var(--text-color);
+    background-color: var(--main-color);
+}
+
+.dialog-cancel-btn {
+    width:35%; 
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 24px;
+    color: var(--text-color);
+    background-color: var(--main-red-color);
+}
+
+/*************************************************************************
+* CSS CLASSES FOR TOAST NOTIFICATION
+*************************************************************************/
+
+.toast-container {
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+    line-height: 40px;
+    display: flex;
+     
+}
+
+.toast-text {
+    font-size: larger;
+    width: 100%;
+    text-align: center;
+}
+
+.toast-close {
+   pointer-events: visible;
+   margin-left: auto;
+   vertical-align: middle;
 }
