@@ -88,6 +88,25 @@ const GlobalDialogCancelButtons =
   document.querySelectorAll("button.cancel-button");
 
 /*****************************************************/
+/* LOGIN PAGE AND FORM                               */
+/*****************************************************/
+const GlobalLoginPage = document.getElementById("loginPage");
+const GlobalLoginForm = document.getElementById("loginForm");
+const GlobalErrorBox = document.getElementById("errorBox");
+const GlobalEmailField = document.getElementById("email");
+const GlobalPasswordField = document.getElementById("password");
+const GlobalEmailError = document.getElementById("emailError");
+const GlobalPasswordError = document.getElementById("passwordError");
+const GlobalAuthError = document.getElementById("authError");
+const GlobalCreateAccountBtn = document.getElementById("createAccountBtn");
+const GlobalLoginBtnIcon = document.getElementById("loginBtnIcon");
+const GlobalLoginBtn = document.getElementById("loginBtn");
+const GlobalResetPasswordBtn = document.getElementById("resetPasswordBtn");
+const GlobalAccountCreated = document.getElementById("accountCreated");
+const GlobalAccountCreatedClose = document.getElementById("accountCreatedClose");
+const GlobalAccountCreatedEmail = document.getElementById("accountCreatedEmail")
+
+/*****************************************************/
 /* OTHER UI COMPONENT VARIABLES */
 /*****************************************************/
 const GlobalSearchBtn = document.getElementById("searchBtn");
