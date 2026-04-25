@@ -30,6 +30,11 @@
         alt="SpeedScore logo">
         <h1 id="appName" class="navbar-title">SpeedScore</h1> 
         <div class="navbar-right-items">
+            <input id="searchBox" class="form-control hidden" 
+                  aria-label="Search Rounds" size="30"
+                  type="search" value="" id="searchRounds"
+                  onkeyup="searchRoundsTable(this.value)" 
+                  onsearch="searchRoundsTable(this.value)">
             <button  id="searchBtn" type="button" class="navbar-btn" title="Search" 
             aria-label="Search">
             <span class="navbar-btn-icon fas fa-search"></span>
