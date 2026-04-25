@@ -2,7 +2,7 @@
  * File: modeActions.js
  * Desc: Contains the JavaScript functions to respond to interactions 
  * with the UI elements in each mode.
- *************************************************************************/
+*************************************************************************/
 
 /*************************************************************************
  * @function Mode Floating Action Button CLICK handler 

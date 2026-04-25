@@ -4,7 +4,6 @@
  * convenient access to frequently used DOM elements.
  *************************************************************************/
 
-
 /************************************/
 /* USER DATA                        */
 /************************************/
@@ -19,7 +18,8 @@ const GlobalMenu = document.getElementById("sideMenu");
 const GlobalMenuIcon = document.getElementById("menuBtnIcon");
 const GlobalMenuItems = document.querySelectorAll("li[role='menuitem']");
 
-//Note: Per Josh Wulf's blog post, we implement all immutable global variables using
+
+//Note: Per Josh Wulf's blog post, we implement all mutable global variables using
 //immediately invoked function expressions
 const GlobalFocusedMenuItem = (() => {
     let _focusedMenuItem = 0
@@ -30,13 +30,10 @@ const GlobalFocusedMenuItem = (() => {
     return Object.freeze(Store)
 })()
 
+
 /************************************/
 /* MODE TAB VARIABLES               */
 /************************************/
-//Array of mode names
-//Array mapping current mode to its name, so that
-//we can set document.title appropriately
-GlobalModeNames=["Activity Feed", "Rounds","Courses","Buddies"];
 //The current mode (0, 1, 2, or 3)
 const GlobalCurrentMode = (() => {
     let _currentMode= 0
@@ -62,6 +59,9 @@ const GlobalModeTabButtons =
 //Array of mode tab panel elements:
 const GlobalModeTabPanels = 
   document.querySelectorAll("div[role='tabpanel']");
+//Array mapping current mode to its name, so that
+//we can set document.title appropriately
+GlobalModeNames=["Activity Feed", "Rounds","Courses","Buddies"];
 
 /*****************************************************/
 /* FLOATING ACTION BUTTON AND MODAL DIALOG VARIABLES */
@@ -78,6 +78,16 @@ const GlobalDialogActionButtons =
 //array of "Cancel" buttons within the dialog boxes
 const GlobalDialogCancelButtons =
   document.querySelectorAll("button.cancel-button");
+
+/*******************************************************/
+/* SEARCH BUTTON, PROFILE BUTTON, SKIP LINK, MODE TABS */
+/*******************************************************/
+const GlobalSearchBtn = document.getElementById("searchBtn");
+const GlobalSearchBox = document.getElementById("searchBox");
+const GlobalProfileBtn = document.getElementById("profileBtn");
+const GlobalProfileBtnImg = document.getElementById("profileBtnImg")
+const GlobalSkipLink = document.getElementById("sLink");
+const GlobalModeTabsContainer = document.getElementById("modeTabs");
 
 /*****************************************************/
 /* LOGIN PAGE AND FORM                               */
@@ -230,17 +240,6 @@ const GlobalDialogPrepFuncs = [()=>{}, ()=>prepLogRoundForm(), ()=>{}, ()=>{}];
 const GlobalDialogTitles = ["SpeedScore: Post to Feed","SpeedScore: Log Round",
   "SpeedScore: Add Course","SpeedScore: Find Buddies"];
 
-
-/*******************************************************/
-/* SEARCH BUTTON, PROFILE BUTTON, SKIP LINK, MODE TABS */
-/*******************************************************/
-const GlobalSearchBtn = document.getElementById("searchBtn");
-const GlobalSearchBox = document.getElementById("searchBox");
-const GlobalProfileBtn = document.getElementById("profileBtn");
-const GlobalProfileBtnImg = document.getElementById("profileBtnImg")
-const GlobalSkipLink = document.getElementById("sLink");
-const GlobalModeTabsContainer = document.getElementById("modeTabs");
-
 /*************************************************************************
  * @function transitionToDialog
  * @desc 
@@ -298,4 +297,3 @@ const GlobalModeTabsContainer = document.getElementById("modeTabs");
   document.title = "SpeedScore: " + GlobalModeNames[GlobalCurrentMode.get()];
   dialogToClose.classList.add("hidden");
 }
-
