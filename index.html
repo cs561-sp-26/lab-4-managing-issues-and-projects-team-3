@@ -198,6 +198,14 @@
       </div>
       <div id="loginPage" class="mode-page">
         <h1 class="mode-page-header">Log In</h1>
+        <div id="accountCreated" class="toast-container hidden" role="alert" aria-atomic="true" aria-live="assertive">
+          <div class="toast-text">
+             New account created with email <span id="accountCreatedEmail"></span>
+          </div>
+           <button id="accountCreatedClose" type="button" class="btn-close toast-close" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+       </div>
         <form id="loginForm" class="centered" novalidate>
             <div class="mb-3">
               <label for="email" class="form-label">Email:<br/>

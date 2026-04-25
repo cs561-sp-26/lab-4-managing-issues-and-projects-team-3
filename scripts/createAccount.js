@@ -82,6 +82,17 @@ GlobalCreateAccountBtn.addEventListener("click",function(e) {
     GlobalFirstFocusableCreateAccountItem.set(GlobalAcctEmailField);
 }
 
+/*************************************************************************
+ * @function accountCreatedClose CLICK Handler 
+ * @Desc 
+ * When the user clicks on the close button of the "Account Created"
+ * toast notification on the "Log In" page, close it.
+ * @global accountCreated: The "Account Created" toast
+ *************************************************************************/
+ accountCreatedClose.addEventListener("click",function() {
+    accountCreated.classList.add("hidden");
+});
+
  /*************************************************************************
  * @function createAccount 
  * @desc 
