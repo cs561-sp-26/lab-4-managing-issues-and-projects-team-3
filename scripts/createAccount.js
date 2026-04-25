@@ -82,6 +82,57 @@ GlobalCreateAccountBtn.addEventListener("click",function(e) {
     GlobalFirstFocusableCreateAccountItem.set(GlobalAcctEmailField);
 }
 
+ /*************************************************************************
+ * @function createAccount 
+ * @desc 
+ * Given a JavaScript object containing a new account, create the account,
+ * return the user to the "Log In" page, and display a toast message
+ * indicating that a new account was created.
+ * For now, we display the account data in an alert box. Eventually,
+ * we will store the data to localStorage.
+ * @global loginPage: The "Log In" page
+ * @global createAccountDialog: The "Create Account" dialog
+ * @global accountCreatedEmail: The field in the toast notification where
+ *         we display the email of the new account.
+ * @global: accountCreated: The toast notification on the "Log In" page
+  *************************************************************************/
+function createAccount() {
+    //Build account object from form data
+    const newAcct = {
+        accountInfo: {
+            email: GlobalAcctEmailField.value, 
+            password: GlobalAcctPasswordField.value,
+            securityQuestion: GlobalAcctSecurityQuestionField.value,
+            securityAnswer: GlobalAcctSecurityAnswerField.value
+        },
+        identityInfo: {
+            displayName: GlobalAcctDisplayNameField.value,
+            profilePic: GlobalAcctProfilePicImage.getAttribute("src"),
+        },
+        speedgolfInfo: {
+            bio: "",
+            homeCourse: "",
+            firstRound: "",
+            personalBest: {strokes: 0, minutes: 0, seconds: 0, course: ""},
+            clubs: {},
+            clubComments: ""
+        },
+        rounds: [],
+        roundCount: 0
+    };    
+    //Save account to localStorage as key-value pair
+    localStorage.setItem(newAcct.accountInfo.email, 
+        JSON.stringify(newAcct));
+    //Reset form in case it is visited again
+    resetCreateAccountForm();
+    //Transition to "Log In" page
+    document.title = "Log In to SpeedScore";
+    GlobalCreateAccountDialog.classList.add("hidden");
+    GlobalLoginPage.classList.remove("hidden");
+    GlobalAccountCreatedEmail.textContent = newAcct.email;
+    GlobalAccountCreated.classList.remove("hidden");
+}
+
 /*************************************************************************
  * @function createAccountForm SUBMIT Handler 
  * @Desc 
@@ -124,7 +175,7 @@ GlobalCreateAccountBtn.addEventListener("click",function(e) {
     if (emailValid && passwordValid && repeatPasswordValid &&
         displayNameValid && securityQuestionValid & securityAnswerValid) { 
         //All is well -- Call createAccount()
-       //createAccount();
+       createAccount();
        return;
     }
     //If here, at least one field is invalid: Display the errors
