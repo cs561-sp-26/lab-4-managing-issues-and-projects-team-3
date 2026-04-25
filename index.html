@@ -229,14 +229,135 @@
             &nbsp;Log In
           </button>
         </form>
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <button id="createAccountBtn" class="nav-link btn btn-link">
+                Create Account
+            </button>
+          </li>
+          <li class="nav-item">
+            <button id="resetPasswordBtn" class="nav-link btn btn-link">Reset Password</button>
+          </li>
+        </ul>
+      </div>    
+      <div id="createAccountDialog" class="mode-page hidden"
+            role="dialog" aria-modal="true" 
+            aria-labelledby="createAccountHeader">
+        <h1 id="createAccountHeader" class="mode-page-header">Create Account</h1>
+        <p id="acctErrorBox" class="alert alert-danger centered hidden">
+          <a id="acctEmailError" href="#acctEmail" class="alert-link">Enter a valid email address<br/></a>
+          <a id="acctPasswordError" href="#acctPassword" class="alert-link">Enter a valid password<br></a>
+          <a id="acctPasswordRepeatError" href="#acctPasswordRepeat" class="alert-link">Repeated password must match<br/></a>
+          <a id="acctDisplayNameError" href="#acctDisplayName" class="alert-link">Enter a valid display name<br/></a>
+          <a id="acctSecurityQuestionError" href="#acctSecurityQuestion" class="alert-link">Enter a valid security question<br/></a>
+          <a id="acctSecurityAnswerError" href="#acctSecurityAnswer" class="alert-link">Enter a valid security question answer</a>
+        </p>
+        <form id="createAccountForm" class="centered" novalidate>
+          <div class="mb-3">
+            <label for="acctEmail" class="form-label">Email:<br/>
+                <input id="acctEmail" type="email" class="form-control centered"
+                aria-describedby="acctEmailDescr"
+                required>
+            </label>
+            <div id="acctEmailDescr" class="form-text">
+              Enter a valid email address (e.g., 'name@domain.com').
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:<br/>
+                <input id="acctPassword" type="password" class="form-control centered"
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+                aria-describedby="acctPasswordDescr"
+                required>
+            </label>
+            <div id="acctPasswordDescr" class="form-text">
+              Passwords must be at least 8 characters long with at least one number, 
+              one lower case letter, and one upper case letter.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="acctPasswordRepeat" class="form-label">Repeat Password:<br/>
+                <input id="acctPasswordRepeat" type="password" class="form-control centered"
+                aria-describedby="acctPasswordRepeatDescr"
+                required>
+            </label>
+            <div id="acctPasswordRepeatDescr" class="form-text">
+              Re-enter password, making sure it exactly matches.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="acctDisplayName" class="form-label">Display Name:<br/>
+                <input id="acctDisplayName" type="text" class="form-control centered"
+                minlength="5"
+                aria-describedby="displayNameDescr"
+                required>
+            </label>
+            <div id="acctDisplayNameDescr" class="form-text">
+              Your display name is your identity within SpeedScore. It must be at least 5 characters.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="acctProfilePic" class="form-label">Profile Picture (optional):<br/>
+              <img id="acctProfilePicImage" src="images/DefaultProfilePic.jpg" 
+                    class="fm-profile-pic" height="46" width="auto"/>
+                <input id="acctProfilePic" type="file" class="form-control centered"
+                accept=".png, .gif, .jpg"
+                aria-describedby="acctProfilePicDescr"
+                required>
+            </label>
+            <div id="acctProfilePicDescr" class="form-text">
+              Optionally upload a profile picture as a .png, .gif, or .jpg file. A rectangular head shot works best.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="acctSecurityQuestion" class="form-label">Security Question:<br/>
+                <input id="acctSecurityQuestion" type="text" class="form-control centered"
+                minlength="5"
+                aria-describedby="acctSecurityQuestionDescr"
+                required>
+            </label>
+            <div id="acctSecurityQuestionDescr" class="form-text">
+              Your security question must be at least 5 characters and should have a memorable answer. You will be asked
+              this question if you ever need to reset your password.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="acctSecurityAnswer" class="form-label">Answer to Security Question:<br/>
+                <input id="acctSecurityAnswer" type="text" class="form-control centered"
+                minlength="5"
+                aria-describedby="acctSecurityAnswerDescr"
+                required>
+            </label>
+            <div id="acctSecurityAnswerDescr" class="form-text">
+              Your security answer must be at least 5 characters and should be something you easily associate
+              your security question. You will have to provide this answer if you ever need to reset your password.
+            </div>
+          </div>
+          <div class="mode-page-btn-container">
+            <button type="submit" id="submitCreateAccountBtn" 
+                class="btn btn-primary dialog-primary-btn" 
+                aria-live="polite" aria-loading="false">
+              <span id="createAccountBtnIcon" 
+                class="fas fa-user-plus" 
+                aria-hidden="true"></span>
+                &nbsp;Create Account
+            </button>
+            <button type="button" id="cancelCreateAccountBtn" 
+                class="btn btn-secondary dialog-cancel-btn">
+                <span class="fas fa-window-close" 
+                aria-hidden="true"></span>
+              &nbsp;Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </main>
     <script src="scripts/main.js"></script>
-    <script src="scripts/window.js"></script>
     <script src="scripts/sideMenu.js"></script>
     <script src="scripts/modeTabs.js"></script>
     <script src="scripts/modeActions.js"></script>
     <script src="scripts/document.js"></script>
     <script src="scripts/login.js"></script>
+    <script src="scripts/createAccount.js"></script>
   </body>
 </html>

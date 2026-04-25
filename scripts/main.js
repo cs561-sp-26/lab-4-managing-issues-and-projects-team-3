@@ -107,6 +107,37 @@ const GlobalAccountCreatedClose = document.getElementById("accountCreatedClose")
 const GlobalAccountCreatedEmail = document.getElementById("accountCreatedEmail")
 
 /*****************************************************/
+/* CREATE ACCOUNT DIALOG FORM                        */
+/*****************************************************/
+const GlobalCreateAccountDialog = document.getElementById("createAccountDialog");
+const GlobalSubmitCreateAccountBtn = document.getElementById("submitCreateAccountBtn");
+const GlobalCancelCreateAccountBtn = document.getElementById("cancelCreateAccountBtn");
+const GlobalAcctErrBox = document.getElementById("acctErrorBox");
+const GlobalAcctEmailField = document.getElementById("acctEmail");
+const GlobalAcctPasswordField = document.getElementById("acctPassword");
+const GlobalAcctPasswordRepeatField = document.getElementById("acctPasswordRepeat");
+const GlobalAcctDisplayNameField = document.getElementById("acctDisplayName");
+const GlobalAcctProfilePicField = document.getElementById("acctProfilePic");
+const GlobalAcctProfilePicImage = document.getElementById("acctProfilePicImage");
+const GlobalAcctSecurityQuestionField = document.getElementById("acctSecurityQuestion");
+const GlobalAcctSecurityAnswerField = document.getElementById("acctSecurityAnswer");
+const GlobalAcctEmailErr = document.getElementById("acctEmailError");
+const GlobalAcctPasswordErr = document.getElementById("acctPasswordError");
+const GlobalAcctPasswordRepeatErr = document.getElementById("acctPasswordRepeatError");
+const GlobalAcctDisplayNameErr = document.getElementById("acctDisplayNameError");
+const GlobalAcctSecurityQuestionErr = document.getElementById("acctSecurityQuestionError");
+const GlobalAcctSecurityAnswerErr = document.getElementById("acctSecurityAnswerError");
+const GlobalFirstFocusableCreateAccountItem = (() => {
+  let _firstFocusedCreateAccountItem = GlobalAcctEmailField
+  const Store = {
+      get: () => _firstFocusedCreateAccountItem,
+      set: val => (_firstFocusedCreateAccountItem = val)
+  }
+  return Object.freeze(Store)
+})()
+const GlobalDefaultProfilePic = "images/DefaultProfilePic.jpg";
+
+/*****************************************************/
 /* OTHER UI COMPONENT VARIABLES */
 /*****************************************************/
 const GlobalSearchBtn = document.getElementById("searchBtn");
