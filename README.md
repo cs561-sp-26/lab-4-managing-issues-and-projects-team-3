@@ -6,7 +6,7 @@ _You need to update this README file only once, when you have completed the lab.
 - Name 1 (GitHub ID 1)
 - Name 2 (GitHub ID 2)
 - Name 3 (GitHub ID 3)
-- Name 4 (GitHub ID 4)
+- Savannah Tanner (102627802)
 - Name 5 (GitHub ID 5)
 
 ## Jira vs. GitHub Projects
@@ -16,7 +16,7 @@ _You need to update this README file only once, when you have completed the lab.
 - Pro 3
 
 ### Cons of Jira
-- Con 1
+- Innacessible to us due to organization restrictions
 - Con 2
 - con 3
 
@@ -31,7 +31,7 @@ _You need to update this README file only once, when you have completed the lab.
 - Con 3
 
 ## Tool Chosen
-[Jira or GitHub Projects]
+Github Projects
 
 ## Rationale
 Write one paragraph rationale here.
@@ -46,7 +46,7 @@ Write one paragraph rationale here.
 | Name 1 | 12 
 | Name 2 | 8 
 | Name 3 | 5 
-| Name 4 | 3 
+| Savannah Tanner | 10 
 | Name 5 | 2 
 | **Total** | **30** 
 
@@ -55,6 +55,7 @@ Write one paragraph rationale here.
 | # | Title       | Feeature Branch | Assigned To | Story Points | Date Started | Date Completed
 |---|-------------|-----------------|-------------|---------------|-------------|---------------
 |[#23](url)|Create mode bar | `feature/mode_bar` | Chris | 3 | 4/15/25 | 4/17/25
+|[#10](url)|Testing: As a SpeedScore stakeholder, I want the codebase to be well-tested and bug-free so the browsing experience is consistent and positive | feature/tests | Savannah Tanner | x | 4/25/2026 | 4/25/2026
 
 
 ## Read.ai Planning Poker Meeting Report Link
