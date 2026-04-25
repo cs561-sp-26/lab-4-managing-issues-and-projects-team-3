@@ -10,6 +10,7 @@ let GlobalDialogClose = null;
 /* MENU VARIABLES                   */
 /************************************/
 const GlobalMenuBtn =  document.getElementById("menuBtn"); 
+const GlobalMenu = document.getElementById("sideMenu");
 const GlobalMenuItems = document.querySelectorAll("li[role='menuitem']");
 
 //Note: Per Josh Wulf's blog post, we implement all immutable global variables using
