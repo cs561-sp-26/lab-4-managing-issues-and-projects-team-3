@@ -189,21 +189,103 @@
       </div> 
       <div id="roundsModeDialog" 
             class="mode-page action-dialog hidden" role="dialog" 
-        aria-modal="true" aria-labelledby="postRoundHeader" tabindex="0">
-        <h1 id="postRoundHeader" class="mode-page-header">Post Round</h1>
-        <p class="mode-page-content">
-          This modal dialog is under construction.
+        aria-modal="true" aria-labelledby="roundFormHeader" tabindex="0">
+        <h1 id="roundFormHeader" class="mode-page-header">Log Round</h1>
+        <p id="roundErrorBox" class="alert alert-danger centered hidden">
+          <a id="roundDateError" href="#roundDate" class="alert-link">Please enter a valid date<br/></a>
+          <a id="roundCourseError" href="#roundCourse" class="alert-link">Please enter a course name having at most 50 characters<br/></a>
+          <a id="roundStrokesError" href="#roundStrokes" class="alert-link">Please enter strokes as an integer value between 9 and 200<br/></a>
+          <a id="roundMinutesError" href="#roundMinutes" class="alert-link">Please enter minutes as an integer value between 10 and 400<br></a>
+          <a id="roundSecondsError" href="#roundSeconds" class="alert-link">Please enter seconds as an integer value beween 0 and 59<br/></a>
+          <a id="roundNotesError" href="#roundNotes" class="alert-link">Please enter notes having at most 500 characters<br/></a>
         </p>
-        <img class="mode-page-icon" src="images/sslogo2.png" 
-            alt="SpeedScore logo">
-        <div class="mode-page-btn-container">
-          <button id="roundsModeActionBtn" 
-                  class="mode-page-btn action-dialog action-button" 
-                  type="button">Post Round</button>
-          <button id="roundsModeCancelBtn" 
-                  class="mode-page-btn action-dialog cancel-button"
-                  type="button">Cancel</button>
-        </div>
+        <form id="logRoundForm" class="centered" novalidate>
+            <div class="mb-3">
+              <label for="roundDate" class="form-label">Date:
+                <input id="roundDate" class="form-control centered" type="date" 
+                aria-describedby="roundDateDescr" required>
+              </label>
+              <div id="roundDateDescr" class="form-text">
+                Enter a valid date
+              </div>
+            </div>
+         <div class="mb-3">
+            <label for="roundCourse" class="form-label">Course:
+              <input id="roundCourse"  class="form-control centered" type="text" 
+                    aria-describedby="roundCourseDescr"
+                    size="50" maxlength="50" required>
+            </label>
+            <div id="roundCourseDescr" class="form-text">
+              Enter a course name of at most 50 characters
+            </div>
+         </div>
+         <div class="mb-3">
+            <label for="roundType">Type:
+              <select name="roundType" id="roundType" class="form-control centered">
+                <option value="practice" selected>Practice</option>
+                <option value="tournament">Tournament</option>
+              </select> 
+            </label>
+          </div>
+          <div class="mb-3">
+            <label for="roundHoles">Holes:
+              <select name="roundHoles" id="roundHoles" class="form-control centered">
+                <option value="9">9</option>
+                <option value="18" selected>18</option>
+              </select> 
+              </label>
+          </div>
+          <div class="mb-3">
+            <label for="roundStrokes">Strokes:
+              <input id="roundStrokes" class="form-control centered" type="number" 
+                      min="9" max="200" value="80" aria-describedby="roundStrokesDescr"
+                      onChange="updateSGS()" required>
+            </label>
+            <div id="roundStrokesDescr" class="form-text">
+              Enter a strokes value between 9 and 200
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="roundTime">Time:<br>
+              <input id="roundMinutes" type="number" size="3"
+                aria-describedby="roundTimeDescr"
+                min="10" max="400" value="60" style="text-align: right"
+                onChange="updateSGS()" required> : 
+              <input id="roundSeconds" type="number" size="2"
+                aria-describedby="roundTimeDescr"
+                min="0" max="60" value="00" onchange="changeSeconds()"
+                required>
+            </label>
+            <div id="roundTimeDescr" class="form-text">
+              Enter a minutes value between 10 and 400, and a seconds value between 0 and 59
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="roundSGS">Speedgolf Score:<br>
+              <input id="roundSGS" class="form-control centered" type="text" 
+                size="6" value="140:00" disabled>
+            </label>
+          </div>
+          <div class="mb-3">
+            <label for="roundNotes">Notes:<br>
+              <textarea id="roundNotes" class="form-control" 
+                aria-describedby="roundNotesDescr"
+                rows="6" cols="75" maxlength="500"></textarea>
+            </label>
+            <div id="roundNotesDescr" class="form-text">
+              Enter optional round notes of up to 500 characters
+            </div>
+          </div>
+          <div class="mode-page-btn-container">
+            <button id="roundFormSubmitBtn" 
+              class="mode-page-btn action-dialog action-button" 
+              type="submit"><span id="roundFormSubmitBtnIcon" class="fa fa-save"></span>
+              <span id="roundFormSubmitBtnLabel">&nbsp;Log Round</span></button>
+            <button id="roundsModeLogCancelBtn" 
+              class="mode-page-btn-cancel action-dialog cancel-button"
+              type="button"><span class="fa fa-window-close"></span>&nbsp;Cancel</button>
+          </div>
+        </form>
       </div> 
       <div id="coursesModeDialog" 
             class="mode-page action-dialog hidden" role="dialog" 
@@ -248,5 +330,6 @@
     <script src="scripts/modeTabs.js"></script>
     <script src="scripts/modeActions.js"></script>
     <script src="scripts/document.js"></script>
+    <script src="scripts/roundsMode.js"></script>
   </body>
 </html>
