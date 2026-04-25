@@ -155,6 +155,11 @@ const GlobalProfileEmailField = document.getElementById("profileEmail");
 const GlobalProfilePasswordField = document.getElementById("profilePassword");
 const GlobalProfileSecurityQuestionField = document.getElementById("profileSecurityQuestion");
 const GlobalProfileSecurityAnswerField = document.getElementById("profileSecurityAnswer");
+const GlobalProfileSettingsBtn = document.getElementById("profileSettingsBtn");
+const GlobalProfileSettingsPanel = document.getElementById("profileSettingsPanel");
+const GlobalProfileDisplayNameField = document.getElementById("profileDisplayName");
+const GlobalProfilePicField = document.getElementById("profilePic");
+const GlobalProfilePicImage = document.getElementById("profilePicImage");
 const GlobalFirstFocusableUpdateProfileItem = (() => {
   let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
   const Store = {
