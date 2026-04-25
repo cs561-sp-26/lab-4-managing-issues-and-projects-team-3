@@ -130,9 +130,113 @@ const GlobalFirstFocusableCreateAccountItem = (() => {
 const GlobalDefaultProfilePic = "images/DefaultProfilePic.jpg";
 
 /*****************************************************/
-/* OTHER UI COMPONENT VARIABLES */
+/* ACCOUNT & SETTINGS DIALOG FORM                    */
 /*****************************************************/
+const GlobalProfileSettingsDialog = document.getElementById("profileSettingsDialog");
+const GlobalAccountSettingsBtn = document.getElementById("accountSettingsBtn");
+const GlobalAccountSettingsPanel = document.getElementById("accountSettingsPanel");
+const GlobalProfileSettingsBtn = document.getElementById("profileSettingsBtn");
+const GlobalProfileSettingsPanel = document.getElementById("profileSettingsPanel");
+const GlobalsgSettingsBtn = document.getElementById("sgSettingsBtn");
+const GlobalsgSettingsPanel = document.getElementById("sgSettingsPanel");
+const GlobalEditProfileForm = document.getElementById("editProfileForm");
+const GlobalProfileErrBox = document.getElementById("profileErrorBox");
+const GlobalProfileEmailErr = document.getElementById("profileEmailError");
+const GlobalProfileDisplayNameErr = document.getElementById("profileDisplayNameError");
+const GlobalProfileSecurityQuestionErr = document.getElementById("profileSecurityQuestionError");
+const GlobalProfileSecurityAnswerErr = document.getElementById("profileSecurityAnswerError");
+const GlobalProfileEmailField = document.getElementById("profileEmail");
+const GlobalProfilePasswordField = document.getElementById("profilePassword");
+const GlobalProfileSecurityQuestionField = document.getElementById("profileSecurityQuestion");
+const GlobalProfileSecurityAnswerField = document.getElementById("profileSecurityAnswer");
+const GlobalProfileDisplayNameField = document.getElementById("profileDisplayName");
+const GlobalProfilePicField = document.getElementById("profilePic");
+const GlobalProfilePicImage = document.getElementById("profilePicImage");
+const GlobalProfileBioField = document.getElementById("sgBio");
+const GlobalProfileFirstRoundField = document.getElementById("sgFirstRound");
+const GlobalProfileHomeCourseField = document.getElementById("sgHomeCourse");
+const GlobalProfileBestStrokesField = document.getElementById("sgBestStrokes");
+const GlobalProfileBestMinutesField = document.getElementById("sgBestMinutes");
+const GlobalProfileBestSecondsField = document.getElementById("sgBestSeconds");
+const GlobalProfileBestCourseField = document.getElementById("sgBestCourse");
+const GlobalAllClubs = ["Driver","3W","4W","5W","Hybrid","1I","2I","3I","4I","5I","6I","7I","8I","9I","PW","GW","SW","LW","Putter"];
+const GlobalProfileClubsInBagChecks = document.getElementById("clubsDiv").querySelectorAll("input");
+const GlobalProfileClubCommentsField = document.getElementById("sgClubComments");
+const GlobalCancelUpdateProfileBtn = document.getElementById("cancelUpdateProfileBtn");
+const GlobalFirstFocusableUpdateProfileItem = (() => {
+  let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
+  const Store = {
+      get: () => _firstFocusedUpdateProfileItem,
+      set: val => (_firstFocusedUpdateProfileItem = val)
+  }
+  return Object.freeze(Store)
+})()
+
+/*****************************************************/
+/* LOG ROUND DIALOG FORM                             */
+/*****************************************************/
+const GlobalRoundsModeDialog = document.getElementById("roundsModeDialog");
+const GlobalRoundFormHeader = document.getElementById("roundFormHeader");
+const GlobalRoundFormSubmitBtn = document.getElementById("roundFormSubmitBtn");
+const GlobalRoundFormSubmitBtnLabel = document.getElementById("roundFormSubmitBtnLabel");
+const GlobalRoundFormSubmitBtnIcon = document.getElementById("roundFormSubmitBtnIcon");
+const GlobalLogRoundForm = document.getElementById("logRoundForm");
+const GlobalRoundErrBox = document.getElementById("roundErrorBox");
+const GlobalRoundDateErr = document.getElementById("roundDateError");
+const GlobalRoundCourseErr = document.getElementById("roundCourseError");
+const GlobalRoundStrokesErr = document.getElementById("roundStrokesError");
+const GlobalRoundMinutesErr = document.getElementById("roundMinutesError");
+const GlobalRoundSecondsErr = document.getElementById("roundSecondsError");
+const GlobalRoundNotesErr = document.getElementById("roundNotesError");
+const GlobalRoundDate = document.getElementById("roundDate");
+const GlobalRoundCourse = document.getElementById("roundCourse");
+const GlobalRoundType = document.getElementById("roundType");
+const GlobalRoundHoles = document.getElementById("roundHoles");
+const GlobalRoundStrokes = document.getElementById("roundStrokes");
+const GlobalRoundMinutes = document.getElementById("roundMinutes");
+const GlobalRoundSeconds = document.getElementById("roundSeconds");
+const GlobalRoundSGS = document.getElementById("roundSGS");
+const GlobalRoundNotes = document.getElementById("roundNotes");
+const GlobalFirstFocusableLogRoundItem = (() => {
+  let _firstFocusedLogRoundItem = GlobalRoundDate
+  const Store = {
+      get: () => _firstFocusedLogRoundItem,
+      set: val => (_firstFocusedLogRoundItem = val)
+  }
+  return Object.freeze(Store)
+})()
+
+GlobalRoundDate.valueAsNumber = 
+Date.now()-(new Date()).getTimezoneOffset()*60000;
+
+/*****************************************************/
+/* LOG ROUND DIALOG FORM TOAST                       */
+/*****************************************************/
+const GlobalRoundUpdatedClose = document.getElementById("roundUpdatedClose");
+const GlobalRoundUpdated = document.getElementById("roundUpdated");
+const GlobalRoundUpdatedMsg = document.getElementById("roundUpdatedMsg");
+
+/*****************************************************/
+/* ROUNDS MODE TABLE                                 */
+/*****************************************************/
+const GlobalRoundsTable = document.getElementById("roundsTable");
+const GlobalRoundsTableCaption = document.getElementById("roundsTableCaption");
+const GlobalRoundsTableSortableColHeaders = document.getElementsByClassName('sortable-header');
+const GlobalRoundsTableSortBtns = document.getElementsByClassName('table-sort-btn');
+const GlobalRoundsTableHeaderColLabels = ['date','course','score'];
+const GlobalRoundsTableSortIcons = document.getElementsByClassName('sort-icon');
+
+const GlobalDialogPrepFuncs = [()=>{}, ()=>prepLogRoundForm(), ()=>{}, ()=>{}];
+const GlobalDialogTitles = ["SpeedScore: Post to Feed","SpeedScore: Log Round",
+  "SpeedScore: Add Course","SpeedScore: Find Buddies"];
+
+
+/*******************************************************/
+/* SEARCH BUTTON, PROFILE BUTTON, SKIP LINK, MODE TABS */
+/*******************************************************/
 const GlobalSearchBtn = document.getElementById("searchBtn");
+const GlobalSearchBox = document.getElementById("searchBox");
 const GlobalProfileBtn = document.getElementById("profileBtn");
+const GlobalProfileBtnImg = document.getElementById("profileBtnImg")
 const GlobalSkipLink = document.getElementById("sLink");
-const GlobalModeTabsContainer = document.getElementById("modeTabs");
+const GlobalModeTabsContainer = document.getElementById("modeTabs");
