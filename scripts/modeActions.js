@@ -2,7 +2,7 @@
  * File: modeActions.js
  * Desc: Contains the JavaScript functions to respond to interactions 
  * with the UI elements in each mode.
-*************************************************************************/
+ *************************************************************************/
 
 /*************************************************************************
  * @function Mode Floating Action Button CLICK handler 
@@ -19,32 +19,22 @@
  * each mode's dialog box
  *************************************************************************/
  for (let i = 0; i < GlobalModeActionButtons.length; ++i) {
-    GlobalModeActionButtons[i].addEventListener("click",function(e) {
-        //Hide tab panel
-        GlobalModeTabPanels[i].classList.add("hidden");
-        //Hide and disable all UI elements
-        GlobalMenuBtn.classList.add("disabled");
-        GlobalSearchBtn.classList.add("disabled");
-        GlobalProfileBtn.classList.add("disabled");
-        GlobalSkipLink.classList.add("hidden"); 
-        GlobalModeTabsContainer.classList.add("disabled");
-        //Show dialog box
-        GlobalModeActionDialogs[i].classList.remove("hidden");
-        //Set focus to dialog box's action button
-        GlobalDialogActionButtons[i].focus();
-        if (GlobalHistoryLogging) {
-            GlobalDialogClose = GlobalDialogCancelButtons[i];
-            const historyObj = {
-                page: "MODE_DIALOG",
-                mode: i,
-                path: GlobalModeDialogNumbersToRoutes.get(i)
-            };
-            history.pushState(historyObj, "", historyObj.path);
-            console.log("Console: In GlobalModeActionButtons click handler; pushing state: ", 
-                         JSON.stringify(historyObj));
-        }
-    });
-}
+    GlobalModeActionButtons[i].addEventListener("click",
+        () => transitionToDialog(GlobalModeActionDialogs[i],GlobalDialogTitles[i],GlobalDialogPrepFuncs[i]));
+  };
+    // //Hide tab panel
+    // GlobalModeTabPanels[GlobalCurrentMode.get()].classList.add("hidden");
+    // //Hide and disable all UI elements
+    // GlobalMenuBtn.classList.add("disabled");
+    // GlobalSearchBtn.classList.add("disabled");
+    // GlobalProfileBtn.classList.add("disabled");
+    // GlobalSkipLink.classList.add("hidden"); 
+    // GlobalModeTabsContainer.classList.add("disabled");
+    // //Show dialog box
+    // GlobalModeActionDialogs[GlobalCurrentMode.get()].classList.remove("hidden");
+    // //Set focus to dialog box's action button
+    // GlobalDialogActionButtons[GlobalCurrentMode.get()].focus();
+    //});
 
 /*************************************************************************
  * @function Dialog Box Action Button CLICK handler 
@@ -61,27 +51,15 @@
  * @global dialogActionButtons: array of default ("OK") buttons for
  * each mode's dialog box
  *************************************************************************/
- for (let i = 0; i < GlobalDialogActionButtons.length; ++i) {
-    GlobalDialogActionButtons[i].addEventListener("click",function(e) {
-        //Hide dialog box
-        GlobalModeActionDialogs[i].classList.add("hidden");
-        //Show tab panel
-        GlobalModeTabPanels[i].classList.remove("hidden");
-        //Show and enable other UI elements
-        GlobalMenuBtn.classList.remove("disabled");       
-        GlobalSearchBtn.classList.remove("disabled"); 
-        GlobalProfileBtn.classList.remove("disabled");                                 
-        GlobalSkipLink.classList.remove("hidden"); 
-        GlobalModeTabsContainer.classList.remove("disabled"); 
-        //Set focus to floating action button
-        GlobalModeActionButtons[i].focus();
-        //TO DO: Implement mode-specific functionality
-        if (GlobalHistoryLogging) {
-            history.back();
-            console.log("Console: In GlobalDialogActionButtons click handler; moving history stack pointer to previous frame.");
-        }
-    });
-}
+ //Feed mode
+ GlobalDialogActionButtons[0].addEventListener("click",
+        () => transitionFromDialog(GlobalModeActionDialogs[0]));
+//Courses mode
+GlobalDialogActionButtons[2].addEventListener("click",
+        () => transitionFromDialog(GlobalModeActionDialogs[2]));
+//Buddies mode
+GlobalDialogActionButtons[3].addEventListener("click",
+        () => transitionFromDialog(GlobalModeActionDialogs[3]));
 
 /*************************************************************************
  * @function Dialog Box Cancel Button CLICK handler 
@@ -91,34 +69,27 @@
  *  show the mode tabs; restore the current mode's main page; and set the 
  * focus to the current mode's action button. We use currentMode to 
  * determine which mode we're in.
- * @global currentMode: index of current mode
- * @global modeTabsContainer: the <div> containing the mode tab buttons
- * @global modeTabPanels: array of tab panels for each mode
- * @global modeActionDialogs: array of dialog boxes for each mode
- * @global dialogActionButtons: array of default ("OK") buttons for
+ * @global GlobalCurrentMode: index of current mode
+ * @global GlobalModeTabsContainer: the <div> containing the mode tab buttons
+ * @global GlobalModeTabPanels: array of tab panels for each mode
+ * @global GlobalModeActionDialogs: array of dialog boxes for each mode
+ * @global GlobalDialogActionButtons: array of default ("OK") buttons for
  * each mode's dialog box
  *************************************************************************/
-/* Dialog Cancel Button Click Handler */
-for (let i = 0; i < GlobalDialogCancelButtons.length; ++i) {
-    GlobalDialogCancelButtons[i].addEventListener("click",function(e) {
-        //Hide dialog box
-        GlobalModeActionDialogs[GlobalCurrentMode.get()].classList.add("hidden");
-        //Show tab panel
-        GlobalModeTabPanels[GlobalCurrentMode.get()].classList.remove("hidden");
-        //Show and enable other UI elements
-        GlobalMenuBtn.classList.remove("disabled");       
-        GlobalSearchBtn.classList.remove("disabled"); 
-        GlobalProfileBtn.classList.remove("disabled");                                 
-        GlobalSkipLink.classList.remove("hidden"); 
-        GlobalModeTabsContainer.classList.remove("disabled"); 
-        //Set focus to floating action button
-        GlobalModeActionButtons[GlobalCurrentMode.get()].focus();
-        if (GlobalHistoryLogging) {
-            history.back();
-            console.log("Console: In GlobalDialogCancelButtons click handler; moving history stack pointer to previous frame.");
-        }
-    });
-}
+//FEED mode
+GlobalDialogCancelButtons[0].addEventListener("click",
+ () => transitionFromDialog(GlobalModeActionDialogs[0]));
+//ROUNDS mode
+GlobalDialogCancelButtons[1].addEventListener("click",function() {
+   resetLogRoundForm(); //Log round form needs to be reset
+   transitionFromDialog(GlobalModeActionDialogs[1]);
+});
+//COURSES mode
+GlobalDialogCancelButtons[2].addEventListener("click",
+ () => transitionFromDialog(GlobalModeActionDialogs[2]));
+//BUDDIES mode
+GlobalDialogCancelButtons[3].addEventListener("click",
+ () => transitionFromDialog(GlobalModeActionDialogs[3]));
 
 /*************************************************************************
  * @function keyDownDialogFocused
