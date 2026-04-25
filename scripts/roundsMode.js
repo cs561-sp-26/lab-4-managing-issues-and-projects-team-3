@@ -216,3 +216,92 @@ if (GlobalUserData.rounds.length == 1) {
   GlobalRoundsTableCaption.textContent = "Table displaying " + GlobalUserData.rounds.length + " speedgolf rounds";
 }
 }
+
+/*************************************************************************
+* @function sortRoundsTable 
+* @desc 
+* Sort the rounds table in ascending or descending order by a given column.
+* Use w3.sortHTML to perform the sort. The function alternatively sorts
+* in ascending and descending order on successive calls.
+* @param colNum -- the integer 1-based index of the column to sort by
+* @global GlobalRoundsTableSortBtns: Array of buttons in col header that
+*         can be clicked 
+* @global GlobalRoundsTableSortableColHeaders: Array of refs to the 
+*         header col elements of the first three (sortable) cols
+* @global GlobalRoundsTableHeaderColLabels: Array of strings labeling 
+*         data in corresponding column
+*************************************************************************/
+function sortRoundsTable(colNum) {
+const sortOrder =  (GlobalRoundsTableSortBtns[colNum-1]
+  .getAttribute("aria-label").indexOf("ascending") != -1) ? 
+  "ascending" : "descending";
+const futureSortOrder = (sortOrder === "ascending") ? "descending" : "ascending";
+w3.sortHTML('#roundsTable','.row-item','td:nth-child(' + colNum + ')');
+for (let i = 1; i <=3; ++i) {
+  if (colNum === i) {
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort");
+    }
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort-amount-down-alt")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort-amount-down-alt");
+    }
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort-amount-down")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort-amount-down");
+    }
+    GlobalRoundsTableSortIcons[i-1].classList.add(
+      (sortOrder === "ascending" ? "fa-sort-amount-down-alt" : "fa-sort-amount-down"));
+    GlobalRoundsTableSortBtns[i-1].setAttribute("aria-label", 'Sort ' + 
+    futureSortOrder + ' by ' + GlobalRoundsTableHeaderColLabels[colNum-1]);
+    GlobalRoundsTableSortableColHeaders[i-1].setAttribute('aria-sort',sortOrder);
+  } else {
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort-amount-down-alt")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort-amount-down-alt");
+    }
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort-amount-down")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort-amount-down");
+    }
+    GlobalRoundsTableSortIcons[i-1].classList.add("fa-sort");
+    GlobalRoundsTableSortBtns[i-1].setAttribute("aria-label", 'Sort ascending by ' + 
+    GlobalRoundsTableHeaderColLabels[i-1]);
+    GlobalRoundsTableSortableColHeaders[i-1].setAttribute('aria-sort','none');
+  }
+}
+}
+
+/*************************************************************************
+* @function searchRoundsTable 
+* @Desc 
+* When the user performs a keystroke within the search box, perform a 
+* search of the rounds table, displaying only those rows that contain
+* the text within the search box.
+* @param searchVal, the text string in the search box
+* @global createAccountForm: the <form> element whose 
+*         SUBMIT handler is triggered
+* @global roundsTable: The table of rounds
+*************************************************************************/
+function searchRoundsTable(searchVal) {
+searchVal = searchVal.toUpperCase(); //case insensitive
+let tr = GlobalRoundsTable.getElementsByTagName("tr");
+let td, rowText, i, j;
+let numVisibleRows = 0;
+for (i = 1; i < tr.length; i++) {  //Loop through all table rows
+  td = tr[i].getElementsByTagName("td");
+  rowText = "";
+  for (j = 0; j < 3; ++j) { //only consider Date, Course, Score cols
+    rowText += td[j].textContent;
+  }
+  if (rowText != "") {
+    if (rowText.toUpperCase().indexOf(searchVal) > -1) {
+      tr[i].style.display = ""; //show row
+      numVisibleRows++;
+    } else {
+      tr[i].style.display = "none"; //hide row
+    }
+  }
+}
+if (numVisibleRows == 1) {
+  GlobalRoundsTableCaption.textContent = "Table displaying 1 speedgolf round";
+} else {
+  GlobalRoundsTableCaption.textContent = "Table displaying " + numVisibleRows + " speedgolf rounds";
+}
+}
