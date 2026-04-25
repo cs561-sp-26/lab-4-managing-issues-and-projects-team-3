@@ -34,7 +34,7 @@
   }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .disabled {
@@ -144,10 +144,10 @@
 /* sidemenu -- Styles the side menu */
 .sidemenu {
     position: fixed; /* Menu stays in place */
-    top: 56px; /* Position menu just below top navbar */
+    top: 60px; /* Position menu just below top navbar */
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margins */
-    z-index: 200; /* Force the menu to be near the front */
+    z-index: 250; /* Force the menu to be near the front */
     left: 0px; /* Position side menu on left-hand side of screen */
     height: 100%; /* Menu is full height of window */
     overflow: hidden;
@@ -182,7 +182,7 @@
 /* .modetab -- Style the container enclosing the mode tabs */
 .modetab-container {
     position: fixed;
-    top: 56px;
+    top: 60px;
     left: 0px;
     width: 100%;
     z-index: 150;
@@ -213,7 +213,7 @@
 * CSS CLASSES FOR MODE PAGES
 *************************************************************************/
 .mode-page {
-    padding-top: 70px;
+    padding-top: 100px;
 }
 
 .mode-page-header {
@@ -238,12 +238,13 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    width: 25%;  
+    width: 80%;
+    gap: 10%  
 }
 
 .mode-page-btn {
     display: inline;
-    font-size: 18px;
+    font-size: 36px;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -252,13 +253,26 @@
     cursor: pointer;
 }
 
+.mode-page-btn-cancel {
+    display: inline;
+    font-size: 36px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: var(--text-color);
+    background-color: var(--main-red-color);
+    cursor: pointer;
+}
+    
+
 /*************************************************************************
 * CSS CLASSES FOR FLOATING ACTION BUTTON
 *************************************************************************/
 /* Float-btn -- Styling for the floating action button. */
 .float-btn {
     position:fixed;
-    width: 120px;
+    width: 136px;
     height: 40px;
     bottom: 20px;
     right: 20px;
@@ -273,4 +287,36 @@
 change cursor to pointer */
 .float-btn:hover {
 cursor: pointer;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR FORMS
+*************************************************************************/
+
+.centered {
+    text-align: center;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR TOAST NOTIFICATION
+*************************************************************************/
+
+.toast-container {
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+    line-height: 40px;
+    display: flex;
+     
+}
+
+.toast-text {
+    font-size: larger;
+    width: 100%;
+    text-align: center;
+}
+
+.toast-close {
+   pointer-events: visible;
+   margin-left: auto;
+   vertical-align: middle;
 }
