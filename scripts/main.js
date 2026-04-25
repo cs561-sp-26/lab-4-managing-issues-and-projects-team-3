@@ -149,6 +149,10 @@ const GlobalProfileDisplayNameErr = document.getElementById("profileDisplayNameE
 const GlobalProfileSecurityQuestionErr = document.getElementById("profileSecurityQuestionError");
 const GlobalProfileSecurityAnswerErr = document.getElementById("profileSecurityAnswerError");
 const GlobalCancelUpdateProfileBtn = document.getElementById("cancelUpdateProfileBtn");
+const GlobalAccountSettingsBtn = document.getElementById("accountSettingsBtn");
+const GlobalAccountSettingsPanel = document.getElementById("accountSettingsPanel");
+const GlobalProfileEmailField = document.getElementById("profileEmail");
+const GlobalProfilePasswordField = document.getElementById("profilePassword");
 const GlobalFirstFocusableUpdateProfileItem = (() => {
   let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
   const Store = {

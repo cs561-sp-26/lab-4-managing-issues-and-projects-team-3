@@ -507,7 +507,48 @@
         </p>
         <form id="editProfileForm" class="centered" novalidate>
           <div id="profileFormAccordion" class="accordion">
-            <!-- Todo: Account, Name & Picture, and Speedgolf Info panels -->
+            <div class="accordion-item">
+              <fieldset>
+                <h2 class="accordion-header" id="accountHeader">
+                  <button id="accountSettingsBtn" class="accordion-button" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#accountSettingsPanel" 
+                    aria-expanded="true" 
+                    aria-controls="accountSettingsPanel">
+                    <legend>Account</legend>
+                  </button>
+                </h2>
+                <div id="accountSettingsPanel" 
+                    class="accordion-collapse collapse show" 
+                    aria-labelledby="accountHeader" 
+                    data-bs-parent="#profileFormAccordion">
+                  <div class="accordion-body">
+                    <div class="mb-3">
+                      <label for="profileEmail" class="form-label">Email:
+                          <input id="profileEmail" type="email" class="form-control centered"
+                          aria-describedby="profileEmailDescr"
+                          required>
+                      </label>
+                      <div id="profileEmailDescr" class="form-text">
+                        Enter a valid email address (e.g., 'name@domain.com').
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="profilePassword" class="form-label">Password:
+                          <input id="profilePassword" type="password" class="form-control centered"
+                          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+                          aria-describedby="profilePasswordDescr"
+                          readonly>
+                      </label>
+                      <div id="profilePasswordDescr" class="form-text">
+                        Use the "Reset Password" option on the Log In page to reset your password.
+                      </div>
+                    </div>
+                    <!-- Todo: Security question and answer fields -->
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <!-- Todo: Name & Picture and Speedgolf Info panels -->
           </div>
           <div class="mode-page-btn-container">
             <button type="submit" id="submitUpdateProfileBtn" 
