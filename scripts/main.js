@@ -139,6 +139,26 @@ const GlobalFirstFocusableCreateAccountItem = (() => {
 const GlobalDefaultProfilePic = "images/DefaultProfilePic.jpg";
 
 /*****************************************************/
+/* ACCOUNT & SETTINGS DIALOG FORM                    */
+/*****************************************************/
+const GlobalProfileSettingsDialog = document.getElementById("profileSettingsDialog");
+const GlobalEditProfileForm = document.getElementById("editProfileForm");
+const GlobalProfileErrBox = document.getElementById("profileErrorBox");
+const GlobalProfileEmailErr = document.getElementById("profileEmailError");
+const GlobalProfileDisplayNameErr = document.getElementById("profileDisplayNameError");
+const GlobalProfileSecurityQuestionErr = document.getElementById("profileSecurityQuestionError");
+const GlobalProfileSecurityAnswerErr = document.getElementById("profileSecurityAnswerError");
+const GlobalCancelUpdateProfileBtn = document.getElementById("cancelUpdateProfileBtn");
+const GlobalFirstFocusableUpdateProfileItem = (() => {
+  let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
+  const Store = {
+      get: () => _firstFocusedUpdateProfileItem,
+      set: val => (_firstFocusedUpdateProfileItem = val)
+  }
+  return Object.freeze(Store)
+})()
+
+/*****************************************************/
 /* OTHER UI COMPONENT VARIABLES */
 /*****************************************************/
 const GlobalSearchBtn = document.getElementById("searchBtn");

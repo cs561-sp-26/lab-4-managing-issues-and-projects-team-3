@@ -495,6 +495,38 @@
           </div>
         </form>
       </div>
+      <div id="profileSettingsDialog" class="mode-page hidden"
+      role="dialog" aria-modal="true" 
+      aria-labelledby="accountProfileHeader">
+        <h1 id="accountProfileHeader" class="mode-page-header">Account & Profile</h1>
+        <p id="profileErrorBox" class="alert alert-danger centered hidden">
+          <a id="profileEmailError" href="#profileEmail" class="alert-link">Enter a valid email address<br/></a>
+          <a id="profileDisplayNameError" href="#profileDisplayName" class="alert-link">Enter a valid display name<br/></a>
+          <a id="profileSecurityQuestionError" href="#profileSecurityQuestion" class="alert-link">Enter a valid security question<br/></a>
+          <a id="profileSecurityAnswerError" href="#profileSecurityAnswer" class="alert-link">Enter a valid security question answer</a>
+        </p>
+        <form id="editProfileForm" class="centered" novalidate>
+          <div id="profileFormAccordion" class="accordion">
+            <!-- Todo: Account, Name & Picture, and Speedgolf Info panels -->
+          </div>
+          <div class="mode-page-btn-container">
+            <button type="submit" id="submitUpdateProfileBtn" 
+                class="btn btn-primary dialog-primary-btn" 
+                aria-live="polite" aria-busy="false">
+              <span id="editProfileBtnIcon" 
+                class="fas fa-user-edit" 
+                aria-hidden="true"></span>
+                &nbsp;Update
+            </button>
+            <button type="button" id="cancelUpdateProfileBtn" 
+                class="btn btn-secondary dialog-cancel-btn">
+                <span class="fas fa-window-close" 
+                aria-hidden="true"></span>
+              &nbsp;Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="scripts/main.js"></script>
