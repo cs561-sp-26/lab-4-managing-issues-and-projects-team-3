@@ -35,9 +35,9 @@
  *************************************************************************/
  function resetLoginForm() {
     document.title = "Log in to SpeedScore";
-    //GlobalErrorBox.classList.add("hidden");
-    //GlobalEmailError.classList.add("hidden");
-    //GlobalPasswordError.classList.add("hidden");
+    GlobalErrorBox.classList.add("hidden");
+    GlobalEmailError.classList.add("hidden");
+    GlobalPasswordError.classList.add("hidden");
     GlobalEmailField.value = "";
     GlobalPasswordField.value = "";
 }
@@ -61,7 +61,7 @@
     //2. Place user acct data of logged in user in global JS object
     GlobalUserData = JSON.parse(localStorage.getItem(userId));
     //3. Populate the "Rounds" table
-    //populateRoundsTable();
+    populateRoundsTable();
     //2. Reset state of app with user logged in.
     GlobalLoginPage.classList.add("hidden");
     GlobalModeTabsContainer.classList.remove("hidden");
@@ -106,24 +106,24 @@
        return;
     }
     //If here, at least one field is invalid
-    //GlobalErrorBox.classList.remove("hidden");
+    GlobalErrorBox.classList.remove("hidden");
     document.title = "Error: Log in to SpeedScore";
     if (!passwordValid) { //Password field is invalid
-         //GlobalPasswordError.classList.remove("hidden");
-         //GlobalPasswordError.focus();
+         GlobalPasswordError.classList.remove("hidden");
+         GlobalPasswordError.focus();
      } else {
-         //GlobalPasswordError.classList.add("hidden");
+         GlobalPasswordError.classList.add("hidden");
      } 
     if (!emailValid) { //Email field is invalid
-        //GlobalEmailError.classList.remove("hidden");
-        //GlobalEmailError.focus();
+        GlobalEmailError.classList.remove("hidden");
+        GlobalEmailError.focus();
     } else {
-        //GlobalEmailError.classList.add("hidden");
+        GlobalEmailError.classList.add("hidden");
     }
     if (emailValid && passwordValid) { //Authentication failed
-       //GlobalAuthError.classList.remove("hidden");
-       //GlobalAuthError.focus();
+       GlobalAuthError.classList.remove("hidden");
+       GlobalAuthError.focus();
      } else {
-         //GlobalAuthError.classList.add("hidden");
+         GlobalAuthError.classList.add("hidden");
      }
  });

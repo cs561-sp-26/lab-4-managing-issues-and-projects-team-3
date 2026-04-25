@@ -206,6 +206,11 @@
              <span aria-hidden="true">&times;</span>
            </button>
        </div>
+        <p id="errorBox" class="alert alert-danger centered hidden">
+          <a id="emailError" href="#email" class="alert-link">Enter a valid email address<br/></a>
+          <a id="passwordError" href="#password" class="alert-link">Enter a valid password</a>
+          <a id="authError" href="#email" class="alert-link">No user account exists with email and password entered. Create an account or re-enter email and/or password</a>
+        </p>
         <form id="loginForm" class="centered" novalidate>
             <div class="mb-3">
               <label for="email" class="form-label">Email:<br/>
@@ -367,5 +372,6 @@
     <script src="scripts/document.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/createAccount.js"></script>
+    <script src="scripts/roundsMode.js"></script>
   </body>
 </html>
