@@ -1,7 +1,7 @@
 /*************************************************************************
  * File: roundsMode.js
- * This file is a placeholder so that login.js can
- * call populateRoundsTable without crashing
-*************************************************************************/
+ * This file contains functions that support the "Rounds" mode, 
+ * including the "Log Round" modal.
+ *************************************************************************/
 function populateRoundsTable() {
 }
