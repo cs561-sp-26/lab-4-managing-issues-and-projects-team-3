@@ -153,6 +153,8 @@ const GlobalAccountSettingsBtn = document.getElementById("accountSettingsBtn");
 const GlobalAccountSettingsPanel = document.getElementById("accountSettingsPanel");
 const GlobalProfileEmailField = document.getElementById("profileEmail");
 const GlobalProfilePasswordField = document.getElementById("profilePassword");
+const GlobalProfileSecurityQuestionField = document.getElementById("profileSecurityQuestion");
+const GlobalProfileSecurityAnswerField = document.getElementById("profileSecurityAnswer");
 const GlobalFirstFocusableUpdateProfileItem = (() => {
   let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
   const Store = {

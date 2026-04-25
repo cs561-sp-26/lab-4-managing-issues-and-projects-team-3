@@ -543,7 +543,30 @@
                         Use the "Reset Password" option on the Log In page to reset your password.
                       </div>
                     </div>
-                    <!-- Todo: Security question and answer fields -->
+                    <div class="mb-3">
+                    <label for="profileSecurityQuestion" class="form-label">Security Question:
+                        <input id="profileSecurityQuestion" type="text" class="form-control centered"
+                        minlength="5"
+                        aria-describedby="profileSecurityQuestionDescr"
+                        required>
+                    </label>
+                    <div id="profileSecurityQuestionDescr" class="form-text">
+                      Your security question must be at least 5 characters and should have a memorable answer. You will be asked
+                      this question if you ever need to reset your password.
+                    </div>
+                  </div>
+                    <div class="mb-3">
+                      <label for="profileSecurityAnswer" class="form-label">Answer to Security Question:
+                          <input id="profileSecurityAnswer" type="text" class="form-control centered"
+                          minlength="5"
+                          aria-describedby="profileSecurityAnswerDescr"
+                          required>
+                      </label>
+                      <div id="profileSecurityAnswerDescr" class="form-text">
+                        Your security answer must be at least 5 characters and should be something you easily associate
+                        your security question. You will have to provide this answer if you ever need to reset your password.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </fieldset>
