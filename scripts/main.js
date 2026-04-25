@@ -7,10 +7,17 @@ let GlobalHistoryLogging = true;
 let GlobalDialogClose = null;
 
 /************************************/
+/* USER DATA                        */
+/************************************/
+//Global variable containing data object of user currently logged in
+let GlobalUserData = {}; //set upon login
+
+/************************************/
 /* MENU VARIABLES                   */
 /************************************/
 const GlobalMenuBtn =  document.getElementById("menuBtn"); 
 const GlobalMenu = document.getElementById("sideMenu");
+const GlobalMenuIcon = document.getElementById("menuBtnIcon");
 const GlobalMenuItems = document.querySelectorAll("li[role='menuitem']");
 
 //Note: Per Josh Wulf's blog post, we implement all immutable global variables using
