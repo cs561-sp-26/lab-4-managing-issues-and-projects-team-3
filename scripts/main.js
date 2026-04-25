@@ -160,6 +160,9 @@ const GlobalProfileSettingsPanel = document.getElementById("profileSettingsPanel
 const GlobalProfileDisplayNameField = document.getElementById("profileDisplayName");
 const GlobalProfilePicField = document.getElementById("profilePic");
 const GlobalProfilePicImage = document.getElementById("profilePicImage");
+const GlobalsgSettingsBtn = document.getElementById("sgSettingsBtn");
+const GlobalsgSettingsPanel = document.getElementById("sgSettingsPanel");
+const GlobalProfileBioField = document.getElementById("sgBio");
 const GlobalFirstFocusableUpdateProfileItem = (() => {
   let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
   const Store = {

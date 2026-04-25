@@ -612,7 +612,33 @@
                   </div>
                 </fieldset>
               </div>
-              <!-- Todo: Speedgolf Info panel -->
+            <div class="accordion-item">
+              <fieldset>
+                <h2 id="sgHeader" class=accordion-header>
+                  <button id="sgSettingsBtn" class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#sgSettingsPanel" 
+                    aria-expanded="false" 
+                    aria-controls="sgSettingsPanel">
+                    <legend>Speedgolf Info</legend>
+                  </button>
+                </h2>
+                <div id="sgSettingsPanel" class="accordion-collapse collapse"
+                    aria-labelledby="sgHeader" data-bs-parent="#profileFormAccordion">
+                  <div class="accordion-body">
+                    <div class="mb-3">
+                      <label for="sgBio" class="form-label">Personal Speedgolf Bio (optional):</label>
+                        <textarea id="sgBio" class="form-control"
+                          aria-describedby="sgBioDescr" rows="5" cols="40" maxlength="500">
+                        </textarea>
+                      <div id="sgBioDescr" class="form-text">
+                        A short personal bio about your speedgolf journey. Maximum of 500 characters.
+                      </div>
+                    </div>
+                    <!-- Todo: First round, home course, best score, and clubs fields -->
+                  </div>
+                </div>
+              </fieldset>
+            </div>
           </div>
           <div class="mode-page-btn-container">
             <button type="submit" id="submitUpdateProfileBtn" 
