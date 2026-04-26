@@ -2,33 +2,34 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=23671330&assignment_repo_type=AssignmentRepo)
 # CS 561 Lab 4 README
 _You need to update this README file only once, when you have completed the lab._
+
 ## Team Members
-- Name 1 (GitHub ID 1)
-- Adrien Protzel (31741271)
+- Alex Bruzda (253197526)
+- Adrien Protzel (AJ-Protzel) [ONID: 934043865]
 - Chris Somnitz (91498970)
 - Savannah Tanner (102627802)
 - Kyle Noble (81642686)
 
 ## Jira vs. GitHub Projects
 ### Pros of Jira
-- Pro 1
-- Pro 2
-- Pro 3
+- Much easier to edit fields. Intuitive edit initiation
+- Better Kanban Board display for tracking issues
+- Cross issue linking and graph views are more robust and intuitive 
 
 ### Cons of Jira
 - Innacessible to us due to organization restrictions
-- Con 2
-- con 3
+- Not natively "code based" (i.e. connected to our codebase/repos) which adds extra steps and complexity to the workflow
+- Needs to be highly customized for the use case prior to accomplishing a variety of basic project management tasks
 
 ### Pros of GitHub Projects
-- GitHub Projects is already linked to GitHub and requires no external installation steps or tools
-- GitHub Projects enables users to create their own personalized views for their tasks
-- GitHub Projects allows issues to contain sub-issues, contributing to a well-organized project
+- Integrates seamlessly with our codebase. Can automatically progress issues from commit messages without extensions/setup.
+- Everything in one place. No need to manage multiple accounts/licenses/authentications.
+- Enables users to create their own personalized views for their tasks and allows issues to contain sub-issues.
 
 ### Cons of GitHub Projects
-- GitHub Projects has a lot of features that create a steep learning curve
-- GitHub Projects only works with GitHub and could not be used with other platforms
-- GitHub Projects does not have a time-tracking or logging feature
+- Roadmap Table is unintuitive to use. Hard to tell when editing a field vs adjusting a view.
+- Automatic linking doesn't always work as expected.
+- Does not have a native time-tracking or logging feature.
 
 ## Tool Chosen
 Github Projects
@@ -43,7 +44,7 @@ Our group initially tried to use Jira for this project, but were unable to conne
 
 | Name | # Commits 
 | --------- | -----------
-| Name 1 | 12 
+| Alex Bruzda | 12 
 | Adrien Protzel | 10 
 | Chris Somnitz | 9
 | Savannah Tanner | 10 
@@ -58,6 +59,7 @@ Our group initially tried to use Jira for this project, but were unable to conne
 |[#10](url)|Testing: As a SpeedScore stakeholder, I want the codebase to be well-tested and bug-free so the browsing experience is consistent and positive | `feature/tests` | Savannah Tanner | x | 4/25/2026 | 4/25/2026
 |[#1]()|As a speedgolfer, I want to track my rounds of speedgolf so that I can see my improvement over time | `feature/rounds-modes` | Adrien Protzel | x | 4/25/25 | 4/25/25
 |[#24](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-team-3/issues/24)|As a speedgolfer, I want to be able to personalize my profile and share with others. | `feature/edit-profile` | Kyle Noble | 3 | 4/25/26 | 4/25/26
+|[#11](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-team-3/issues/11)|As a speedscore user, I want to be able to move around the website with my mouse so that I can explore pages | `feature/click-handling` | Alex Bruzda | 2 | 4/23/2026 | 4/25/2026
 
 
 ## Read.ai Planning Poker Meeting Report Link
