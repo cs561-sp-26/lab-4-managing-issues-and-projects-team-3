@@ -9,26 +9,25 @@
  * When the user clicks the menuBtn, open or close the side menu 
  * based on current menu state.
  *************************************************************************/
- document.getElementById("menuBtn")
+ GlobalMenuBtn
    .addEventListener("click", function (e) {
-    const sideMenu = document.getElementById("sideMenu");
-    const sideMenuIcon = document.getElementById("menuBtnIcon");
-    const sideMenuBtn = document.getElementById("menuBtn");
-    if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
+    if (GlobalMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
         //Change menu icon
-        sideMenuIcon.classList.remove("fa-bars");
-        sideMenuIcon.classList.add("fa-times");
+        GlobalMenuIcon.classList.remove("fa-bars");
+        GlobalMenuIcon.classList.add("fa-times");
         //Open menu
-        sideMenuBtn.setAttribute("aria-expanded","true"); 
+        GlobalMenuBtn.setAttribute("aria-expanded","true"); 
         sideMenu.classList.add("sidemenu-open");
 
     } else { //CLOSE MENU
         //Change menu icon
-        sideMenuIcon.classList.remove("fa-times");
-        sideMenuIcon.classList.add("fa-bars");
+        GlobalMenuIcon.classList.remove("fa-times");
+        GlobalMenuIcon.classList.add("fa-bars");
         //Close menu
-        sideMenuBtn.setAttribute("aria-expanded","false");
-        sideMenu.classList.remove("sidemenu-open");
+        GlobalMenuBtn.setAttribute("aria-expanded","false");
+        GlobalMenu.classList.remove("sidemenu-open");
+        //Focus menu button
+        setTimeout(() => GlobalMenuBtn.focus(),1);
     }
 });
 
