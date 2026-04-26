@@ -164,6 +164,7 @@ const GlobalsgSettingsBtn = document.getElementById("sgSettingsBtn");
 const GlobalsgSettingsPanel = document.getElementById("sgSettingsPanel");
 const GlobalProfileBioField = document.getElementById("sgBio");
 const GlobalProfileFirstRoundField = document.getElementById("sgFirstRound");
+const GlobalProfileHomeCourseField = document.getElementById("sgHomeCourse");
 const GlobalFirstFocusableUpdateProfileItem = (() => {
   let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
   const Store = {
