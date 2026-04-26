@@ -130,6 +130,64 @@ const GlobalProfileBtnImg = document.getElementById("profileBtnImg")
 const GlobalSkipLink = document.getElementById("sLink");
 const GlobalModeTabsContainer = document.getElementById("modeTabs");
 
+/*************************************************************************
+ * @function transitionToDialog
+ * @desc 
+ * This function prepares the UI prior to opening a dialog box. It hides
+ * the skip link, banner bar buttons, mode tabs, and current tab panel,
+ * so that they are unavailable while the user interacts with the dialog.
+ * It then displays the dialog box and dialog box title.
+ * Note: This function is placed in main.js because it is useful to 
+ * multiple UI components.
+ * @param dialogTitle: The title of the dialog to which to set 
+ * document.title
+ * @param dialog: A reference to the HTML element containing the dialog;
+ * it will be shown by removing the "hidden" class 
+ * @param dialogPrepFunc: A reference to a function to call to prepare 
+ * the dialog's appearance.
+ * @global GlobalSkipLink: The skip link
+ * @global GlobalMenuBtn: The menu button
+ * @global GlobalModeTabsContainer: The mode tabs
+ * @global GlobalModeTabPanels: array of tab panels 
+ * @global GlobalCurrentMode, index of current mode.
+ *************************************************************************/
+ function transitionToDialog(dialog, dialogTitle, dialogPrepFunc) {
+  GlobalSkipLink.classList.add("hidden"); 
+  GlobalMenuBtn.classList.add("hidden");
+  GlobalSearchBtn.classList.add("hidden");
+  GlobalProfileBtn.classList.add("hidden");
+  GlobalModeTabsContainer.classList.add("hidden");
+  GlobalModeTabPanels[GlobalCurrentMode.get()].classList.add("hidden");
+  document.title = dialogTitle;
+  dialogPrepFunc();
+  dialog.classList.remove("hidden");
+}
+
+/*************************************************************************
+ * @function transitionFromDialog
+ * @param dialogToClose -- a reference to the HML dialog element to close
+ * @desc 
+ * This function restores the UI after closing a dialog box. It shows
+ * the skip link, banner bar buttons, mode tabs, and current tab panel,
+ * Note: This function is placed in main.js because it is useful to 
+ * multiple UI components.
+ * @global GlobalSkipLink: The skip link
+ * @global GlobalMenuBtn: The menu button
+ * @global GlobalModeTabsContainer: The mode tabs
+ * @global GlobalModeTabPanels: array of tab panels 
+ * @global GlobalCurrentMode, index of current mode.
+ *************************************************************************/
+ function transitionFromDialog(dialogToClose) {
+  GlobalSkipLink.classList.remove("hidden"); 
+  GlobalMenuBtn.classList.remove("hidden");
+  GlobalSearchBtn.classList.remove("hidden");
+  GlobalProfileBtn.classList.remove("hidden");
+  GlobalModeTabsContainer.classList.remove("hidden");
+  GlobalModeTabPanels[GlobalCurrentMode.get()].classList.remove("hidden");
+  document.title = "SpeedScore: " + GlobalModeNames[GlobalCurrentMode.get()];
+  dialogToClose.classList.add("hidden");
+}
+
 /*****************************************************/
 /* FLOATING ACTION BUTTON AND MODAL DIALOG VARIABLES */
 /*****************************************************/
