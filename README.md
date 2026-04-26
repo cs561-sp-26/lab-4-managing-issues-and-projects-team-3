@@ -39,7 +39,7 @@ Github Projects
 Our group initially tried to use Jira for this project, but were unable to connect it to our repository due to permission restrictions. As a result, we switched to GitHub Projects and decided to use it throughout the project. GitHub Projects was already integrated with our repository and was immediately accessible to all group-members. Also, its support for issues and sub-issues allowed us to organize and track our work effectively.
 
 ## Jira or GitHub Project link
-[Project link](url)
+[Project link](https://github.com/orgs/cs561-sp-26/projects/4)
 
 ## Commits
 
@@ -64,4 +64,4 @@ Our group initially tried to use Jira for this project, but were unable to conne
 
 
 ## Read.ai Planning Poker Meeting Report Link
-[Project link](https://github.com/orgs/cs561-sp-26/projects/4)
+[Project link](url)
