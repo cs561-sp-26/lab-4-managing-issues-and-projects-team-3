@@ -137,6 +137,20 @@
     margin-left: 16px;
 } 
 
+.navbar-profile-btn {
+    margin-left: 8px;
+    margin-right: 8px;
+    height: 44px;
+    width: 44px;
+    background-image: url("../images/DefaultProfilePic.jpg");
+    background-size: cover;
+    flex-shrink: 0;
+}
+
+.navbar-profile-pic {
+    background-size: cover;
+}
+
 /*************************************************************************
 * CSS CLASSES FOR SIDE MENU
 *************************************************************************/

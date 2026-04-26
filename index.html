@@ -496,299 +496,298 @@
       <div id="profileSettingsDialog" class="mode-page hidden"
       role="dialog" aria-modal="true" 
       aria-labelledby="accountProfileHeader">
-    <h1 id="accountProfileHeader" class="mode-page-header">Account & Profile</h1>
-    <p id="profileErrorBox" class="alert alert-danger centered hidden">
-      <a id="profileEmailError" href="#profileEmail" class="alert-link">Enter a valid email address<br/></a>
-      <a id="profileDisplayNameError" href="#profileDisplayName" class="alert-link">Enter a valid display name<br/></a>
-      <a id="profileSecurityQuestionError" href="#profileSecurityQuestion" class="alert-link">Enter a valid security question<br/></a>
-      <a id="profileSecurityAnswerError" href="#profileSecurityAnswer" class="alert-link">Enter a valid security question answer</a>
-    </p>
-    <form id="editProfileForm" class="centered" novalidate>
-      <div id="profileFormAccordion" class="accordion">
-        <div class="accordion-item">
-          <fieldset>
-            <h2 class="accordion-header" id="accountHeader">
-              <button id="accountSettingsBtn" class="accordion-button" type="button"
-                data-bs-toggle="collapse" data-bs-target="#accountSettingsPanel" 
-                aria-expanded="true" 
-                aria-controls="accountSettingsPanel">
-                <legend>Account</legend>
-              </button>
-            </h2>
-            <div id="accountSettingsPanel" 
-                class="accordion-collapse collapse show" 
-                aria-labelledby="accountHeader" 
-                data-bs-parent="#profileFormAccordion">
-              <div class="accordion-body">
-              <div class="mb-3">
-                <label for="profileEmail" class="form-label">Email:
-                    <input id="profileEmail" type="email" class="form-control centered"
-                    aria-describedby="profileEmailDescr"
-                    required>
-                </label>
-                <div id="profileEmailDescr" class="form-text">
-                  Enter a valid email address (e.g., 'name@domain.com').
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="profilePassword" class="form-label">Password:
-                    <input id="profilePassword" type="password" class="form-control centered"
-                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
-                    aria-describedby="profilePasswordDescr"
-                    readonly>
-                </label>
-                <div id="profilePasswordDescr" class="form-text">
-                  Use the "Reset Password" option on the Log In page to reset your password.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="profileSecurityQuestion" class="form-label">Security Question:
-                    <input id="profileSecurityQuestion" type="text" class="form-control centered"
-                    minlength="5"
-                    aria-describedby="profileSecurityQuestionDescr"
-                    required>
-                </label>
-                <div id="profileSecurityQuestionDescr" class="form-text">
-                  Your security question must be at least 5 characters and should have a memorable answer. You will be asked
-                  this question if you ever need to reset your password.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="profileSecurityAnswer" class="form-label">Answer to Security Question:
-                    <input id="profileSecurityAnswer" type="text" class="form-control centered"
-                    minlength="5"
-                    aria-describedby="profileSecurityAnswerDescr"
-                    required>
-                </label>
-                <div id="profileSecurityAnswerDescr" class="form-text">
-                  Your security answer must be at least 5 characters and should be something you easily associate
-                  your security question. You will have to provide this answer if you ever need to reset your password.
-                </div>
-              </div>
-            </div>
-            </div>
-          </fieldset>
-        </div>
-        <div class="accordion-item">
-          <fieldset>
-            <h2 id="profileHeader" class="accordion-header">
-              <button id="profileSettingsBtn" class="accordion-button collapsed" type="button"
-                data-bs-toggle="collapse" data-bs-target="#profileSettingsPanel" 
-                aria-expanded="false" 
-                aria-controls="profileSettingsPanel">
-                <legend>Name & Picture</legend>
-              </button>
-            </h2>
-            <div id="profileSettingsPanel" class="accordion-collapse collapse"
-              aria-labelledby="profileHeader" data-bs-parent="#profileFormAccordion">
-              <div class="accordion-body">
-              <div class="mb-3">
-                <label for="profileDisplayName" class="form-label">Display Name:<br/>
-                    <input id="profileDisplayName" type="text" class="form-control centered"
-                    minlength="5"
-                    aria-describedby="profileDisplayNameDescr"
-                    required>
-                </label>
-                <div id="profileDisplayNameDescr" class="form-text">
-                  Your display name is your identity within SpeedScore. It must be at least 5 characters.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="profilePic" class="form-label">Profile Picture (optional):<br/>
-                  <img id="profilePicImage" src="images/DefaultProfilePic.jpg" 
-                        class="fm-profile-pic" height="46" width="auto"/>
-                    <input id="profilePic" type="file" class="form-control centered"
-                    accept=".png, .gif, .jpg"
-                    aria-describedby="profilePicDescr"
-                    required>
-                </label>
-                <div id="profilePicDescr" class="form-text">
-                  Upload a profile picture as a .png, .gif, or .jpg file. A rectangular head shot works best.
-                </div>
-              </div>
-            </div>
-            </div>
-          </fieldset>
-        </div>
-        <div class="accordion-item">
-          <fieldset>
-            <h2 id="sgHeader" class=accordion-header>
-              <button id="sgSettingsBtn" class="accordion-button collapsed" type="button"
-                data-bs-toggle="collapse" data-bs-target="#sgSettingsPanel" 
-                aria-expanded="false" 
-                aria-controls="sgSettingsPanel">
-                <legend>Speedgolf Info</legend>
-              </button>
-            </h2>
-            <div id="sgSettingsPanel" class="accordion-collapse collapse"
-                aria-labelledby="sgHeader" data-bs-parent="#profileFormAccordion">
-              <div class="accordion-body">
-                <div class="mb-3">
-                  <label for="sgBio" class="form-label">Personal Speedgolf Bio (optional):</label>
-                    <textarea id="sgBio" class="form-control"
-                      aria-describedby="sgBioDescr" rows="5" cols="40" maxlength="500">
-                    </textarea>
-                  <div id="sgBioDescr" class="form-text">
-                    A short personal bio about your speedgolf journey. Maximum of 500 characters.
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="sgFirstRound" class="form-label">Date of First Speedgolf Round (optional):</label>
-                    <input type="month" id="sgFirstRound" class="form-control centered"
-                      value="2021-07" aria-describedby="sgFirstRoundDescr">
-                  <div id="sgFirstRoundDescr" class="form-text">
-                    Month and year in which you played your first speedgolf round.
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="sgHomeCourser" class="form-label">Home Course (optional):</label>
-                    <input type="text" id="sgHomeCourse" class="form-control centered"
-                      aria-describedby="sgHomeCourseDescr">
-                  <div id="sgHomeCourseDescr" class="form-text">
-                    Course where you play most of your speedgolf.
-                  </div>
-                </div>
-                <fieldset>
-                  <legend class="fm-legend-sm">Best 18-Hole Speedgolf Score (optional)</legend>
-                  <div class="mb-3">
-                    <label for="sgBestStrokes" class="form-label">Strokes:
-                        <input id="sgBestStrokes" type="number" class="form-control centered"
-                        min="36" max="200"
-                        aria-describedby="sgBestScoreDescr">
-                    </label>
-                    <label for="sgBestMinutes" class="form-label">Minutes:
-                      <input id="sgBestMinutes" type="number" class="form-control centered"
-                      min="36" max="200"
-                      aria-describedby="sgBestScoreDescr">
-                    </label>
-                    <label for="sgBestSeconds" class="form-label">Seconds:
-                      <input id="sgBestSeconds" type="number" class="form-control centered"
-                      min="0" max="59"
-                      aria-describedby="sgBestScoreDescr">
-                    </label>
-                    <div id="sgBestScoreDescr" class="form-text">
-                      Personal best speedgolf round in strokes (18-200), minutes (18-200), and seconds (0-59) taken. 
+        <h1 id="accountProfileHeader" class="mode-page-header">Account & Profile</h1>
+        <p id="profileErrorBox" class="alert alert-danger centered hidden">
+          <a id="profileEmailError" href="#profileEmail" class="alert-link">Enter a valid email address<br/></a>
+          <a id="profileDisplayNameError" href="#profileDisplayName" class="alert-link">Enter a valid display name<br/></a>
+          <a id="profileSecurityQuestionError" href="#profileSecurityQuestion" class="alert-link">Enter a valid security question<br/></a>
+          <a id="profileSecurityAnswerError" href="#profileSecurityAnswer" class="alert-link">Enter a valid security question answer</a>
+        </p>
+        <form id="editProfileForm" class="centered" novalidate>
+          <div id="profileFormAccordion" class="accordion">
+            <div class="accordion-item">
+              <fieldset>
+                <h2 class="accordion-header" id="accountHeader">
+                  <button id="accountSettingsBtn" class="accordion-button" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#accountSettingsPanel" 
+                    aria-expanded="true" 
+                    aria-controls="accountSettingsPanel">
+                    <legend>Account</legend>
+                  </button>
+                </h2>
+                <div id="accountSettingsPanel" 
+                    class="accordion-collapse collapse show" 
+                    aria-labelledby="accountHeader" 
+                    data-bs-parent="#profileFormAccordion">
+                  <div class="accordion-body">
+                    <div class="mb-3">
+                      <label for="profileEmail" class="form-label">Email:
+                          <input id="profileEmail" type="email" class="form-control centered"
+                          aria-describedby="profileEmailDescr"
+                          required>
+                      </label>
+                      <div id="profileEmailDescr" class="form-text">
+                        Enter a valid email address (e.g., 'name@domain.com').
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="profilePassword" class="form-label">Password:
+                          <input id="profilePassword" type="password" class="form-control centered"
+                          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+                          aria-describedby="profilePasswordDescr"
+                          readonly>
+                      </label>
+                      <div id="profilePasswordDescr" class="form-text">
+                        Use the "Reset Password" option on the Log In page to reset your password.
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="profileSecurityQuestion" class="form-label">Security Question:
+                          <input id="profileSecurityQuestion" type="text" class="form-control centered"
+                          minlength="5"
+                          aria-describedby="profileSecurityQuestionDescr"
+                          required>
+                      </label>
+                      <div id="profileSecurityQuestionDescr" class="form-text">
+                        Your security question must be at least 5 characters and should have a memorable answer. You will be asked
+                        this question if you ever need to reset your password.
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="profileSecurityAnswer" class="form-label">Answer to Security Question:
+                          <input id="profileSecurityAnswer" type="text" class="form-control centered"
+                          minlength="5"
+                          aria-describedby="profileSecurityAnswerDescr"
+                          required>
+                      </label>
+                      <div id="profileSecurityAnswerDescr" class="form-text">
+                        Your security answer must be at least 5 characters and should be something you easily associate
+                        your security question. You will have to provide this answer if you ever need to reset your password.
+                      </div>
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="sgBestCourse" class="form-label">Course Where Best Score Attained (optional):
-                      <input id="sgBestCourse" type="text" class="form-control centered"
-                      aria-describedby="sgBestCourseDescr" minlength="10">
-                    </label>
-                    <div id="sgBestCourseDescr" class="form-text">
-                      Name of course where you shot your best speedgolf score. Must be at least 10 characters. 
-                    </div>
-                  </div>
-                </fieldset>
-                <fieldset>
-                  <legend class="fm-legend-sm">Clubs in Bag (optional)</legend>
-                  <div id="clubsDiv" class="mb-3">
-                    <input id="sgDriver" type="checkbox" name="Driver"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sgDriver">Driver</label>
-                    <input id="sg3W" type="checkbox" name="3W"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg3W">3W</label>
-                    <input id="sg4W" type="checkbox" name="4W"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg4W">4W</label>
-                    <input id="sg5W" type="checkbox" name="5W"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg5W">5W</label>
-                    <input id="sgHybrid" type="checkbox" name="Hybrid"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sgHybrid">Hybrid</label>
-                    <br/>
-                    <input id="sg1I" type="checkbox" name="1I"
-                    aria-describedby="1I">
-                    <label>1I</label>
-                    <input id="sg2I" type="checkbox" name="2I"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg2I">2I</label>
-                    <input id="sg3I" type="checkbox" name="3I"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg3I">3I</label>
-                    <input id="sg4I" type="checkbox" name="4I"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg4I">4I</label>
-                    <input id="sg5I" type="checkbox" name="5I"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg5I">5I</label>
-                    <input id="sg6I" type="checkbox" name="6I"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg6I">6I</label>
-                    <input id="sg7I" type="checkbox" name="7I"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg7I">7I</label>
-                    <input id="sg8I" type="checkbox" name="8I"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg8I">8I</label>
-                    <input id="sg9I" type="checkbox" name="9I"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sg9I">9I</label>
-                    <br/>
-                    <input id="sgPW" type="checkbox" name="PW"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sgPW">PW</label>
-                    <input id="sgGW" type="checkbox" name="GW"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sgGW">GW</label>
-                    <input id="sgSW" type="checkbox" name="SW"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sgSW">SW</label>
-                    <input id="sgLW" type="checkbox" name="LW"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sgLW">LW</label>
-                    <br/>
-                    <input id="sgPutter" type="checkbox" name="Putter"
-                    aria-describedby="sgClubsDescr">
-                    <label for="sgPutter">Putter</label>
-                    <div id="sgClubsDescr" class="form-text">
-                      Select the clubs you normally carry during a speedgolf round. 
-                    </div>
-                    <label for="sgClubComments" class="form-label">Comments on Clubs (optional):</label>
-                    <textarea id="sgClubComments" class="form-control"
-                      aria-describedby="sgClubCommentsDescr"></textarea>
-                    <div id="sgClubCommentsDescr" class="form-text">
-                      Describe your clubs in greater detail. 
-                    </div>
-                  </div>
-                </fieldset>
-              </div>
+                </div>
+              </fieldset>
             </div>
-          </fieldset>
-        </div>
+            <div class="accordion-item">
+              <fieldset>
+                <h2 id="profileHeader" class="accordion-header">
+                  <button id="profileSettingsBtn" class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#profileSettingsPanel" 
+                    aria-expanded="false" 
+                    aria-controls="profileSettingsPanel">
+                    <legend>Name & Picture</legend>
+                  </button>
+                </h2>
+                <div id="profileSettingsPanel" class="accordion-collapse collapse"
+                  aria-labelledby="profileHeader" data-bs-parent="#profileFormAccordion">
+                  <div class="accordion-body">
+                    <div class="mb-3">
+                      <label for="profileDisplayName" class="form-label">Display Name:<br/>
+                          <input id="profileDisplayName" type="text" class="form-control centered"
+                          minlength="5"
+                          aria-describedby="profileDisplayNameDescr"
+                          required>
+                      </label>
+                      <div id="profileDisplayNameDescr" class="form-text">
+                        Your display name is your identity within SpeedScore. It must be at least 5 characters.
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="profilePic" class="form-label">Profile Picture (optional):<br/>
+                        <img id="profilePicImage" src="images/DefaultProfilePic.jpg" 
+                              class="fm-profile-pic" height="46" width="auto"/>
+                          <input id="profilePic" type="file" class="form-control centered"
+                          accept=".png, .gif, .jpg"
+                          aria-describedby="profilePicDescr"
+                          required>
+                      </label>
+                      <div id="profilePicDescr" class="form-text">
+                        Upload a profile picture as a .png, .gif, or .jpg file. A rectangular head shot works best.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="accordion-item">
+              <fieldset>
+                <h2 id="sgHeader" class=accordion-header>
+                  <button id="sgSettingsBtn" class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#sgSettingsPanel" 
+                    aria-expanded="false" 
+                    aria-controls="sgSettingsPanel">
+                    <legend>Speedgolf Info</legend>
+                  </button>
+                </h2>
+                <div id="sgSettingsPanel" class="accordion-collapse collapse"
+                    aria-labelledby="sgHeader" data-bs-parent="#profileFormAccordion">
+                  <div class="accordion-body">
+                    <div class="mb-3">
+                      <label for="sgBio" class="form-label">Personal Speedgolf Bio (optional):</label>
+                        <textarea id="sgBio" class="form-control"
+                          aria-describedby="sgBioDescr" rows="5" cols="40" maxlength="500">
+                        </textarea>
+                      <div id="sgBioDescr" class="form-text">
+                        A short personal bio about your speedgolf journey. Maximum of 500 characters.
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="sgFirstRound" class="form-label">Date of First Speedgolf Round (optional):</label>
+                        <input type="month" id="sgFirstRound" class="form-control centered"
+                          value="2021-07" aria-describedby="sgFirstRoundDescr">
+                      <div id="sgFirstRoundDescr" class="form-text">
+                        Month and year in which you played your first speedgolf round.
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="sgHomeCourser" class="form-label">Home Course (optional):</label>
+                        <input type="text" id="sgHomeCourse" class="form-control centered"
+                          aria-describedby="sgHomeCourseDescr">
+                      <div id="sgHomeCourseDescr" class="form-text">
+                        Course where you play most of your speedgolf.
+                      </div>
+                    </div>
+                    <fieldset>
+                      <legend class="fm-legend-sm">Best 18-Hole Speedgolf Score (optional)</legend>
+                      <div class="mb-3">
+                        <label for="sgBestStrokes" class="form-label">Strokes:
+                            <input id="sgBestStrokes" type="number" class="form-control centered"
+                            min="36" max="200"
+                            aria-describedby="sgBestScoreDescr">
+                        </label>
+                        <label for="sgBestMinutes" class="form-label">Minutes:
+                          <input id="sgBestMinutes" type="number" class="form-control centered"
+                          min="36" max="200"
+                          aria-describedby="sgBestScoreDescr">
+                        </label>
+                        <label for="sgBestSeconds" class="form-label">Seconds:
+                          <input id="sgBestSeconds" type="number" class="form-control centered"
+                          min="0" max="59"
+                          aria-describedby="sgBestScoreDescr">
+                        </label>
+                        <div id="sgBestScoreDescr" class="form-text">
+                          Personal best speedgolf round in strokes (18-200), minutes (18-200), and seconds (0-59) taken. 
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="sgBestCourse" class="form-label">Course Where Best Score Attained (optional):
+                          <input id="sgBestCourse" type="text" class="form-control centered"
+                          aria-describedby="sgBestCourseDescr" minlength="10">
+                        </label>
+                        <div id="sgBestCourseDescr" class="form-text">
+                          Name of course where you shot your best speedgolf score. Must be at least 10 characters. 
+                        </div>
+                      </div>
+                    </fieldset>
+                    <fieldset>
+                      <legend class="fm-legend-sm">Clubs in Bag (optional)</legend>
+                      <div id="clubsDiv" class="mb-3">
+                        <input id="sgDriver" type="checkbox" name="Driver"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sgDriver">Driver</label>
+                        <input id="sg3W" type="checkbox" name="3W"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg3W">3W</label>
+                        <input id="sg4W" type="checkbox" name="4W"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg4W">4W</label>
+                        <input id="sg5W" type="checkbox" name="5W"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg5W">5W</label>
+                        <input id="sgHybrid" type="checkbox" name="Hybrid"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sgHybrid">Hybrid</label>
+                        <br/>
+                        <input id="sg1I" type="checkbox" name="1I"
+                        aria-describedby="1I">
+                        <label>1I</label>
+                        <input id="sg2I" type="checkbox" name="2I"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg2I">2I</label>
+                        <input id="sg3I" type="checkbox" name="3I"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg3I">3I</label>
+                        <input id="sg4I" type="checkbox" name="4I"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg4I">4I</label>
+                        <input id="sg5I" type="checkbox" name="5I"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg5I">5I</label>
+                        <input id="sg6I" type="checkbox" name="6I"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg6I">6I</label>
+                        <input id="sg7I" type="checkbox" name="7I"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg7I">7I</label>
+                        <input id="sg8I" type="checkbox" name="8I"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg8I">8I</label>
+                        <input id="sg9I" type="checkbox" name="9I"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sg9I">9I</label>
+                        <br/>
+                        <input id="sgPW" type="checkbox" name="PW"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sgPW">PW</label>
+                        <input id="sgGW" type="checkbox" name="GW"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sgGW">GW</label>
+                        <input id="sgSW" type="checkbox" name="SW"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sgSW">SW</label>
+                        <input id="sgLW" type="checkbox" name="LW"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sgLW">LW</label>
+                        <br/>
+                        <input id="sgPutter" type="checkbox" name="Putter"
+                        aria-describedby="sgClubsDescr">
+                        <label for="sgPutter">Putter</label>
+                        <div id="sgClubsDescr" class="form-text">
+                          Select the clubs you normally carry during a speedgolf round. 
+                        </div>
+                        <label for="sgClubComments" class="form-label">Comments on Clubs (optional):</label>
+                        <textarea id="sgClubComments" class="form-control"
+                          aria-describedby="sgClubCommentsDescr"></textarea>
+                        <div id="sgClubCommentsDescr" class="form-text">
+                          Describe your clubs in greater detail. 
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="mode-page-btn-container">
+            <button type="submit" id="submitUpdateProfileBtn" 
+                class="btn btn-primary dialog-primary-btn" 
+                aria-live="polite" aria-busy="false">
+              <span id="editProfileBtnIcon" 
+                class="fas fa-user-edit" 
+                aria-hidden="true"></span>
+                &nbsp;Update
+            </button>
+            <button type="button" id="cancelUpdateProfileBtn" 
+                class="btn btn-secondary dialog-cancel-btn">
+                <span class="fas fa-window-close" 
+                aria-hidden="true"></span>
+              &nbsp;Cancel
+            </button>
+          </div>
+        </form>
       </div>
-      <div class="mode-page-btn-container">
-        <button type="submit" id="submitUpdateProfileBtn" 
-            class="btn btn-primary dialog-primary-btn" 
-            aria-live="polite" aria-busy="false">
-          <span id="editProfileBtnIcon" 
-            class="fas fa-user-edit" 
-            aria-hidden="true"></span>
-            &nbsp;Update
-        </button>
-        <button type="button" id="cancelUpdateProfileBtn" 
-            class="btn btn-secondary dialog-cancel-btn">
-            <span class="fas fa-window-close" 
-            aria-hidden="true"></span>
-          &nbsp;Cancel
-        </button>
-      </div>
-    </form>
-  </div>           
     </main>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="scripts/main.js"></script>
-        <script src="scripts/sideMenu.js"></script>
-        <script src="scripts/modeTabs.js"></script>
-        <script src="scripts/document.js"></script>
-        <script src="scripts/login.js"></script>
-        <script src="scripts/createAccount.js"></script>
-        <script src="scripts/editProfile.js"></script>
-        <script src="scripts/roundsMode.js"></script>
-        <script src="scripts/modeActions.js"></script>
-        <script src="https://www.w3schools.com/lib/w3.js"></script>
-       </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/sideMenu.js"></script>
+    <script src="scripts/modeTabs.js"></script>
+    <script src="scripts/modeActions.js"></script>
+    <script src="scripts/document.js"></script>
+    <script src="scripts/roundsMode.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/createAccount.js"></script>
+    <script src="scripts/editProfile.js"></script>
   </body>
 </html>
