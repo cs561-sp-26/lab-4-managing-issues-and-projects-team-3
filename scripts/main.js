@@ -62,6 +62,75 @@ const GlobalModeTabPanels =
   document.querySelectorAll("div[role='tabpanel']");
 
 /*****************************************************/
+/* PROFILE SETTINGS DIALOG VARIABLES                 */
+/*****************************************************/
+const GlobalProfileBtn = document.getElementById("profileBtn");
+const GlobalProfileSettingsDialog = document.getElementById("profileSettingsDialog");
+const GlobalProfileForm = document.getElementById("editProfileForm");
+const GlobalProfileEmail = document.getElementById("profileEmail");
+const GlobalProfilePassword = document.getElementById("profilePassword");
+const GlobalProfileSecurityQuestion = document.getElementById("profileSecurityQuestion");
+const GlobalProfileSecurityAnswer = document.getElementById("profileSecurityAnswer");
+const GlobalProfileDisplayName = document.getElementById("profileDisplayName");
+const GlobalProfilePic = document.getElementById("profilePic");
+const GlobalProfilePicImage = document.getElementById("profilePicImage");
+const GlobalProfileErrBox = document.getElementById("profileErrorBox");
+const GlobalProfileEmailErr = document.getElementById("profileEmailError");
+const GlobalProfileDisplayNameErr = document.getElementById("profileDisplayNameError");
+const GlobalProfileSecurityQuestionErr = document.getElementById("profileSecurityQuestionError");
+const GlobalProfileSecurityAnswerErr = document.getElementById("profileSecurityAnswerError");
+
+/*****************************************************/
+/* ROUNDS MODE DIALOG VARIABLES                      */
+/*****************************************************/
+const GlobalRoundUpdated = document.getElementById("roundUpdated");
+const GlobalRoundUpdatedClose = document.getElementById("roundUpdatedClose");
+const GlobalRoundUpdatedMsg = document.getElementById("roundUpdatedMsg");
+const GlobalRoundsModeDialog = document.getElementById("roundsModeDialog");
+const GlobalLogRoundForm = document.getElementById("logRoundForm");
+const GlobalRoundDate = document.getElementById("roundDate");
+const GlobalRoundCourse = document.getElementById("roundCourse");
+const GlobalRoundType = document.getElementById("roundType");
+const GlobalRoundHoles = document.getElementById("roundHoles");
+const GlobalRoundStrokes = document.getElementById("roundStrokes");
+const GlobalRoundMinutes = document.getElementById("roundMinutes");
+const GlobalRoundSeconds = document.getElementById("roundSeconds");
+const GlobalRoundSGS = document.getElementById("roundSGS");
+const GlobalRoundNotes = document.getElementById("roundNotes");
+const GlobalRoundErrBox = document.getElementById("roundErrorBox");
+const GlobalRoundDateErr = document.getElementById("roundDateError");
+const GlobalRoundCourseErr = document.getElementById("roundCourseError");
+const GlobalRoundStrokesErr = document.getElementById("roundStrokesError");
+const GlobalRoundMinutesErr = document.getElementById("roundMinutesError");
+const GlobalRoundSecondsErr = document.getElementById("roundSecondsError");
+const GlobalRoundNotesErr = document.getElementById("roundNotesError");
+const GlobalRoundFormHeader = document.getElementById("roundFormHeader");
+const GlobalRoundFormSubmitBtnLabel = document.getElementById("roundFormSubmitBtnLabel");
+const GlobalRoundFormSubmitBtnIcon = document.getElementById("roundFormSubmitBtnIcon");
+const GlobalRoundsModeLogCancelBtn = document.getElementById("roundsModeLogCancelBtn");
+
+/*****************************************************/
+/* ROUNDS MODE TABLE VARIABLES                       */
+/*****************************************************/
+const GlobalRoundsTable = document.getElementById("roundsTable");
+const GlobalRoundsTableCaption = document.getElementById("roundsTableCaption");
+const GlobalRoundsTableSortBtns = document.querySelectorAll("button.table-sort-btn");
+const GlobalRoundsTableSortIcons = document.querySelectorAll("span.sort-icon");
+const GlobalRoundsTableSortableColHeaders = document.querySelectorAll("th.sortable-header");
+const GlobalRoundsTableHeaderColLabels = ["date", "course", "score"];
+
+const GlobalSearchBtn = document.getElementById("searchBtn");
+const GlobalSearchBox = document.getElementById("searchBox");
+
+const GlobalDialogPrepFuncs = [()=>{}, ()=>prepLogRoundForm(), ()=>{}, ()=>{}];
+const GlobalDialogTitles = ["SpeedScore: Feed", "SpeedScore: Log Round", "SpeedScore: Courses", "SpeedScore: Buddies"];
+
+const GlobalDefaultProfilePic = "images/DefaultProfilePic.jpg";
+const GlobalProfileBtnImg = document.getElementById("profileBtnImg")
+const GlobalSkipLink = document.getElementById("sLink");
+const GlobalModeTabsContainer = document.getElementById("modeTabs");
+
+/*****************************************************/
 /* FLOATING ACTION BUTTON AND MODAL DIALOG VARIABLES */
 /*****************************************************/
 //Array of mode action buttons
