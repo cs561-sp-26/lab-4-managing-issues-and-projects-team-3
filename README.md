@@ -4,7 +4,7 @@
 _You need to update this README file only once, when you have completed the lab._
 ## Team Members
 - Name 1 (GitHub ID 1)
-- Adrien Protzel (AJ-Protzel) [ONID: 934043865]
+- Adrien Protzel (31741271)
 - Chris Somnitz (91498970)
 - Savannah Tanner (102627802)
 - Kyle Noble (81642686)
