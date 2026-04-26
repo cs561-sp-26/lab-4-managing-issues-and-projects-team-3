@@ -140,27 +140,28 @@ const GlobalFirstFocusableCreateAccountItem = (() => {
 const GlobalDefaultProfilePic = "images/DefaultProfilePic.jpg";
 
 /*****************************************************/
+/* ACCOUNT & SETTINGS DIALOG FORM                    */
+/*****************************************************/
 const GlobalProfileSettingsDialog = document.getElementById("profileSettingsDialog");
+const GlobalAccountSettingsBtn = document.getElementById("accountSettingsBtn");
+const GlobalAccountSettingsPanel = document.getElementById("accountSettingsPanel");
+const GlobalProfileSettingsBtn = document.getElementById("profileSettingsBtn");
+const GlobalProfileSettingsPanel = document.getElementById("profileSettingsPanel");
+const GlobalsgSettingsBtn = document.getElementById("sgSettingsBtn");
+const GlobalsgSettingsPanel = document.getElementById("sgSettingsPanel");
 const GlobalEditProfileForm = document.getElementById("editProfileForm");
 const GlobalProfileErrBox = document.getElementById("profileErrorBox");
 const GlobalProfileEmailErr = document.getElementById("profileEmailError");
 const GlobalProfileDisplayNameErr = document.getElementById("profileDisplayNameError");
 const GlobalProfileSecurityQuestionErr = document.getElementById("profileSecurityQuestionError");
 const GlobalProfileSecurityAnswerErr = document.getElementById("profileSecurityAnswerError");
-const GlobalCancelUpdateProfileBtn = document.getElementById("cancelUpdateProfileBtn");
-const GlobalAccountSettingsBtn = document.getElementById("accountSettingsBtn");
-const GlobalAccountSettingsPanel = document.getElementById("accountSettingsPanel");
 const GlobalProfileEmailField = document.getElementById("profileEmail");
 const GlobalProfilePasswordField = document.getElementById("profilePassword");
 const GlobalProfileSecurityQuestionField = document.getElementById("profileSecurityQuestion");
 const GlobalProfileSecurityAnswerField = document.getElementById("profileSecurityAnswer");
-const GlobalProfileSettingsBtn = document.getElementById("profileSettingsBtn");
-const GlobalProfileSettingsPanel = document.getElementById("profileSettingsPanel");
 const GlobalProfileDisplayNameField = document.getElementById("profileDisplayName");
 const GlobalProfilePicField = document.getElementById("profilePic");
 const GlobalProfilePicImage = document.getElementById("profilePicImage");
-const GlobalsgSettingsBtn = document.getElementById("sgSettingsBtn");
-const GlobalsgSettingsPanel = document.getElementById("sgSettingsPanel");
 const GlobalProfileBioField = document.getElementById("sgBio");
 const GlobalProfileFirstRoundField = document.getElementById("sgFirstRound");
 const GlobalProfileHomeCourseField = document.getElementById("sgHomeCourse");
@@ -171,6 +172,7 @@ const GlobalProfileBestCourseField = document.getElementById("sgBestCourse");
 const GlobalAllClubs = ["Driver","3W","4W","5W","Hybrid","1I","2I","3I","4I","5I","6I","7I","8I","9I","PW","GW","SW","LW","Putter"];
 const GlobalProfileClubsInBagChecks = document.getElementById("clubsDiv").querySelectorAll("input");
 const GlobalProfileClubCommentsField = document.getElementById("sgClubComments");
+const GlobalCancelUpdateProfileBtn = document.getElementById("cancelUpdateProfileBtn");
 const GlobalFirstFocusableUpdateProfileItem = (() => {
   let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
   const Store = {
@@ -179,16 +181,6 @@ const GlobalFirstFocusableUpdateProfileItem = (() => {
   }
   return Object.freeze(Store)
 })()
-
-/*****************************************************/
-/* OTHER UI COMPONENT VARIABLES                      */
-/*****************************************************/
-const GlobalSearchBtn = document.getElementById("searchBtn");
-const GlobalSearchBox = document.getElementById("searchBox");
-const GlobalProfileBtn = document.getElementById("profileBtn");
-const GlobalProfileBtnImg = document.getElementById("profileBtnImg");
-const GlobalSkipLink = document.getElementById("sLink");
-const GlobalModeTabsContainer = document.getElementById("modeTabs");
 
 /*****************************************************/
 /* LOG ROUND DIALOG FORM                             */
@@ -269,7 +261,7 @@ const GlobalDialogTitles = ["SpeedScore: Post to Feed","SpeedScore: Log Round",
  * @global GlobalModeTabPanels: array of tab panels 
  * @global GlobalCurrentMode, index of current mode.
  *************************************************************************/
-function transitionToDialog(dialog, dialogTitle, dialogPrepFunc) {
+ function transitionToDialog(dialog, dialogTitle, dialogPrepFunc) {
   GlobalSkipLink.classList.add("hidden"); 
   GlobalMenuBtn.classList.add("hidden");
   GlobalSearchBtn.classList.add("hidden");
@@ -295,7 +287,7 @@ function transitionToDialog(dialog, dialogTitle, dialogPrepFunc) {
  * @global GlobalModeTabPanels: array of tab panels 
  * @global GlobalCurrentMode, index of current mode.
  *************************************************************************/
-function transitionFromDialog(dialogToClose) {
+ function transitionFromDialog(dialogToClose) {
   GlobalSkipLink.classList.remove("hidden"); 
   GlobalMenuBtn.classList.remove("hidden");
   GlobalSearchBtn.classList.remove("hidden");
