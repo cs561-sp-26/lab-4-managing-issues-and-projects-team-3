@@ -650,7 +650,39 @@
                       Course where you play most of your speedgolf.
                     </div>
                   </div>
-                  <!-- Todo: Best score and clubs fields -->
+                    <fieldset>
+                      <legend class="fm-legend-sm">Best 18-Hole Speedgolf Score (optional)</legend>
+                      <div class="mb-3">
+                        <label for="sgBestStrokes" class="form-label">Strokes:
+                            <input id="sgBestStrokes" type="number" class="form-control centered"
+                            min="36" max="200"
+                            aria-describedby="sgBestScoreDescr">
+                        </label>
+                        <label for="sgBestMinutes" class="form-label">Minutes:
+                          <input id="sgBestMinutes" type="number" class="form-control centered"
+                          min="36" max="200"
+                          aria-describedby="sgBestScoreDescr">
+                        </label>
+                        <label for="sgBestSeconds" class="form-label">Seconds:
+                          <input id="sgBestSeconds" type="number" class="form-control centered"
+                          min="0" max="59"
+                          aria-describedby="sgBestScoreDescr">
+                        </label>
+                        <div id="sgBestScoreDescr" class="form-text">
+                          Personal best speedgolf round in strokes (18-200), minutes (18-200), and seconds (0-59) taken. 
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="sgBestCourse" class="form-label">Course Where Best Score Attained (optional):
+                          <input id="sgBestCourse" type="text" class="form-control centered"
+                          aria-describedby="sgBestCourseDescr" minlength="10">
+                        </label>
+                        <div id="sgBestCourseDescr" class="form-text">
+                          Name of course where you shot your best speedgolf score. Must be at least 10 characters. 
+                        </div>
+                      </div>
+                    </fieldset>
+                    <!-- Todo: Clubs in bag fieldset -->
                   </div>
                 </div>
               </fieldset>

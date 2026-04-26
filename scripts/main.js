@@ -165,6 +165,10 @@ const GlobalsgSettingsPanel = document.getElementById("sgSettingsPanel");
 const GlobalProfileBioField = document.getElementById("sgBio");
 const GlobalProfileFirstRoundField = document.getElementById("sgFirstRound");
 const GlobalProfileHomeCourseField = document.getElementById("sgHomeCourse");
+const GlobalProfileBestStrokesField = document.getElementById("sgBestStrokes");
+const GlobalProfileBestMinutesField = document.getElementById("sgBestMinutes");
+const GlobalProfileBestSecondsField = document.getElementById("sgBestSeconds");
+const GlobalProfileBestCourseField = document.getElementById("sgBestCourse");
 const GlobalFirstFocusableUpdateProfileItem = (() => {
   let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
   const Store = {
