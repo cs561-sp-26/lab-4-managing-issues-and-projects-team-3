@@ -169,6 +169,9 @@ const GlobalProfileBestStrokesField = document.getElementById("sgBestStrokes");
 const GlobalProfileBestMinutesField = document.getElementById("sgBestMinutes");
 const GlobalProfileBestSecondsField = document.getElementById("sgBestSeconds");
 const GlobalProfileBestCourseField = document.getElementById("sgBestCourse");
+const GlobalAllClubs = ["Driver","3W","4W","5W","Hybrid","1I","2I","3I","4I","5I","6I","7I","8I","9I","PW","GW","SW","LW","Putter"];
+const GlobalProfileClubsInBagChecks = document.getElementById("clubsDiv").querySelectorAll("input");
+const GlobalProfileClubCommentsField = document.getElementById("sgClubComments");
 const GlobalFirstFocusableUpdateProfileItem = (() => {
   let _firstFocusedUpdateProfileItem = GlobalAcctEmailField
   const Store = {
