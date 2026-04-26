@@ -4,8 +4,8 @@
 _You need to update this README file only once, when you have completed the lab._
 ## Team Members
 - Name 1 (GitHub ID 1)
-- Name 2 (GitHub ID 2)
-- Name 3 (GitHub ID 3)
+- Adrien Protzel (AJ-Protzel) [ONID: 934043865]
+- Chris Somnitz (91498970)
 - Savannah Tanner (102627802)
 - Name 5 (GitHub ID 5)
 
@@ -44,8 +44,8 @@ Write one paragraph rationale here.
 | Name | # Commits 
 | --------- | -----------
 | Name 1 | 12 
-| Name 2 | 8 
-| Name 3 | 5 
+| Adrien Protzel | 10 
+| Chris Somnitz | 9
 | Savannah Tanner | 10 
 | Name 5 | 2 
 | **Total** | **30** 
@@ -54,8 +54,9 @@ Write one paragraph rationale here.
 
 | # | Title       | Feeature Branch | Assigned To | Story Points | Date Started | Date Completed
 |---|-------------|-----------------|-------------|---------------|-------------|---------------
-|[#23](url)|Create mode bar | `feature/mode_bar` | Chris | 3 | 4/15/25 | 4/17/25
-|[#10](url)|Testing: As a SpeedScore stakeholder, I want the codebase to be well-tested and bug-free so the browsing experience is consistent and positive | feature/tests | Savannah Tanner | x | 4/25/2026 | 4/25/2026
+|[#3](url)|As a speedgolfer, I want to store my speedscore information in an account so that I can keep all my speedgolf information in one location | `feature/account_management` | Chris | x | 4/25/25 | 4/25/25
+|[#10](url)|Testing: As a SpeedScore stakeholder, I want the codebase to be well-tested and bug-free so the browsing experience is consistent and positive | `feature/tests` | Savannah Tanner | x | 4/25/2026 | 4/25/2026
+|[#1]()|As a speedgolfer, I want to track my rounds of speedgolf so that I can see my improvement over time | `feature/rounds-modes` | Adrien Protzel | x | 4/25/25 | 4/25/25
 
 
 ## Read.ai Planning Poker Meeting Report Link
