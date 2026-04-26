@@ -5,7 +5,7 @@ _You need to update this README file only once, when you have completed the lab.
 
 ## Team Members
 - Alex Bruzda (253197526)
-- Adrien Protzel (AJ-Protzel) [ONID: 934043865]
+- Adrien Protzel (31741271)
 - Chris Somnitz (91498970)
 - Savannah Tanner (102627802)
 - Kyle Noble (81642686)
@@ -22,14 +22,15 @@ _You need to update this README file only once, when you have completed the lab.
 - Needs to be highly customized for the use case prior to accomplishing a variety of basic project management tasks
 
 ### Pros of GitHub Projects
-- Integrates seamlessly with our codebase. Can automatically progress issues from commit messages without extensions/setup.
-- Everything in one place. No need to manage multiple accounts/licenses/authentications.
-- Enables users to create their own personalized views for their tasks and allows issues to contain sub-issues.
+- GitHub Projects is already linked to GitHub and requires no external installation steps or tools
+- GitHub Projects enables users to create their own personalized views for their tasks
+- GitHub Projects allows issues to contain sub-issues, contributing to a well-organized project
 
 ### Cons of GitHub Projects
 - Roadmap Table is unintuitive to use. Hard to tell when editing a field vs adjusting a view.
-- Automatic linking doesn't always work as expected.
-- Does not have a native time-tracking or logging feature.
+- GitHub Projects has a lot of features that create a steep learning curve
+- GitHub Projects only works with GitHub and could not be used with other platforms
+- GitHub Projects does not have a time-tracking or logging feature
 
 ## Tool Chosen
 Github Projects
