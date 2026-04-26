@@ -3,17 +3,23 @@
  * Definitions of variables to maintain app state and provide
  * convenient access to frequently used DOM elements.
  *************************************************************************/
-let GlobalHistoryLogging = true;
-let GlobalDialogClose = null;
+
+/************************************/
+/* USER DATA                        */
+/************************************/
+//Global variable containing data object of user currently logged in
+let GlobalUserData = {}; //set upon login
 
 /************************************/
 /* MENU VARIABLES                   */
 /************************************/
 const GlobalMenuBtn =  document.getElementById("menuBtn"); 
 const GlobalMenu = document.getElementById("sideMenu");
+const GlobalMenuIcon = document.getElementById("menuBtnIcon");
 const GlobalMenuItems = document.querySelectorAll("li[role='menuitem']");
 
-//Note: Per Josh Wulf's blog post, we implement all immutable global variables using
+
+//Note: Per Josh Wulf's blog post, we implement all mutable global variables using
 //immediately invoked function expressions
 const GlobalFocusedMenuItem = (() => {
     let _focusedMenuItem = 0
@@ -24,28 +30,10 @@ const GlobalFocusedMenuItem = (() => {
     return Object.freeze(Store)
 })()
 
+
 /************************************/
 /* MODE TAB VARIABLES               */
 /************************************/
-//Array of mode names
-const GlobalModeNumbersToModes = new Map([
-  [0, "ACTIVITY_FEED"],
-  [1, "ROUNDS"],
-  [2, "COURSES"],
-  [3, "BUDDIES"]
-]);
-const GlobalModeNumbersToRoutes = new Map([
-  [0, "/activityfeed"],
-  [1, "/rounds"],
-  [2, "/courses"],
-  [3, "/buddies"]
-]);
-const GlobalModeDialogNumbersToRoutes = new Map([
-  [0, "/activityfeed/newpost"],
-  [1, "/rounds/newround"],
-  [2, "/courses/addcourse"],
-  [3, "/buddies/findbuddy"]
-]);
 //The current mode (0, 1, 2, or 3)
 const GlobalCurrentMode = (() => {
     let _currentMode= 0
@@ -71,6 +59,9 @@ const GlobalModeTabButtons =
 //Array of mode tab panel elements:
 const GlobalModeTabPanels = 
   document.querySelectorAll("div[role='tabpanel']");
+//Array mapping current mode to its name, so that
+//we can set document.title appropriately
+GlobalModeNames=["Activity Feed", "Rounds","Courses","Buddies"];
 
 /*****************************************************/
 /* FLOATING ACTION BUTTON AND MODAL DIALOG VARIABLES */
@@ -87,6 +78,16 @@ const GlobalDialogActionButtons =
 //array of "Cancel" buttons within the dialog boxes
 const GlobalDialogCancelButtons =
   document.querySelectorAll("button.cancel-button");
+
+/*******************************************************/
+/* SEARCH BUTTON, PROFILE BUTTON, SKIP LINK, MODE TABS */
+/*******************************************************/
+const GlobalSearchBtn = document.getElementById("searchBtn");
+const GlobalSearchBox = document.getElementById("searchBox");
+const GlobalProfileBtn = document.getElementById("profileBtn");
+const GlobalProfileBtnImg = document.getElementById("profileBtnImg")
+const GlobalSkipLink = document.getElementById("sLink");
+const GlobalModeTabsContainer = document.getElementById("modeTabs");
 
 /*****************************************************/
 /* LOGIN PAGE AND FORM                               */
@@ -139,8 +140,6 @@ const GlobalFirstFocusableCreateAccountItem = (() => {
 const GlobalDefaultProfilePic = "images/DefaultProfilePic.jpg";
 
 /*****************************************************/
-/* ACCOUNT & SETTINGS DIALOG FORM                    */
-/*****************************************************/
 const GlobalProfileSettingsDialog = document.getElementById("profileSettingsDialog");
 const GlobalEditProfileForm = document.getElementById("editProfileForm");
 const GlobalProfileErrBox = document.getElementById("profileErrorBox");
@@ -182,12 +181,72 @@ const GlobalFirstFocusableUpdateProfileItem = (() => {
 })()
 
 /*****************************************************/
-/* OTHER UI COMPONENT VARIABLES */
+/* OTHER UI COMPONENT VARIABLES                      */
 /*****************************************************/
 const GlobalSearchBtn = document.getElementById("searchBtn");
+const GlobalSearchBox = document.getElementById("searchBox");
 const GlobalProfileBtn = document.getElementById("profileBtn");
+const GlobalProfileBtnImg = document.getElementById("profileBtnImg");
 const GlobalSkipLink = document.getElementById("sLink");
 const GlobalModeTabsContainer = document.getElementById("modeTabs");
+
+/*****************************************************/
+/* LOG ROUND DIALOG FORM                             */
+/*****************************************************/
+const GlobalRoundsModeDialog = document.getElementById("roundsModeDialog");
+const GlobalRoundFormHeader = document.getElementById("roundFormHeader");
+const GlobalRoundFormSubmitBtn = document.getElementById("roundFormSubmitBtn");
+const GlobalRoundFormSubmitBtnLabel = document.getElementById("roundFormSubmitBtnLabel");
+const GlobalRoundFormSubmitBtnIcon = document.getElementById("roundFormSubmitBtnIcon");
+const GlobalLogRoundForm = document.getElementById("logRoundForm");
+const GlobalRoundErrBox = document.getElementById("roundErrorBox");
+const GlobalRoundDateErr = document.getElementById("roundDateError");
+const GlobalRoundCourseErr = document.getElementById("roundCourseError");
+const GlobalRoundStrokesErr = document.getElementById("roundStrokesError");
+const GlobalRoundMinutesErr = document.getElementById("roundMinutesError");
+const GlobalRoundSecondsErr = document.getElementById("roundSecondsError");
+const GlobalRoundNotesErr = document.getElementById("roundNotesError");
+const GlobalRoundDate = document.getElementById("roundDate");
+const GlobalRoundCourse = document.getElementById("roundCourse");
+const GlobalRoundType = document.getElementById("roundType");
+const GlobalRoundHoles = document.getElementById("roundHoles");
+const GlobalRoundStrokes = document.getElementById("roundStrokes");
+const GlobalRoundMinutes = document.getElementById("roundMinutes");
+const GlobalRoundSeconds = document.getElementById("roundSeconds");
+const GlobalRoundSGS = document.getElementById("roundSGS");
+const GlobalRoundNotes = document.getElementById("roundNotes");
+const GlobalFirstFocusableLogRoundItem = (() => {
+  let _firstFocusedLogRoundItem = GlobalRoundDate
+  const Store = {
+      get: () => _firstFocusedLogRoundItem,
+      set: val => (_firstFocusedLogRoundItem = val)
+  }
+  return Object.freeze(Store)
+})()
+
+GlobalRoundDate.valueAsNumber = 
+Date.now()-(new Date()).getTimezoneOffset()*60000;
+
+/*****************************************************/
+/* LOG ROUND DIALOG FORM TOAST                       */
+/*****************************************************/
+const GlobalRoundUpdatedClose = document.getElementById("roundUpdatedClose");
+const GlobalRoundUpdated = document.getElementById("roundUpdated");
+const GlobalRoundUpdatedMsg = document.getElementById("roundUpdatedMsg");
+
+/*****************************************************/
+/* ROUNDS MODE TABLE                                 */
+/*****************************************************/
+const GlobalRoundsTable = document.getElementById("roundsTable");
+const GlobalRoundsTableCaption = document.getElementById("roundsTableCaption");
+const GlobalRoundsTableSortableColHeaders = document.getElementsByClassName('sortable-header');
+const GlobalRoundsTableSortBtns = document.getElementsByClassName('table-sort-btn');
+const GlobalRoundsTableHeaderColLabels = ['date','course','score'];
+const GlobalRoundsTableSortIcons = document.getElementsByClassName('sort-icon');
+
+const GlobalDialogPrepFuncs = [()=>{}, ()=>prepLogRoundForm(), ()=>{}, ()=>{}];
+const GlobalDialogTitles = ["SpeedScore: Post to Feed","SpeedScore: Log Round",
+  "SpeedScore: Add Course","SpeedScore: Find Buddies"];
 
 /*************************************************************************
  * @function transitionToDialog

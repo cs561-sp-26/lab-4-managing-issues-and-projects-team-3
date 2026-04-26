@@ -1,0 +1,22 @@
+{
+  "name": "speedscore",
+  "version": "1.0.0",
+  "description": "This repository contains the code for the SpeedScore personal speedfgolf app developed in the book *Full Stack Web Development from the Ground Up* (first edition) by Chris Hundhausen, published by Morgan Kaufmann.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FSWebDevBook/speedscore.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FSWebDevBook/speedscore/issues"
+  },
+  "homepage": "https://github.com/FSWebDevBook/speedscore#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.23.2",
+    "axe-playwright": "^1.1.11"
+  }
+}
