@@ -21,20 +21,20 @@ _You need to update this README file only once, when you have completed the lab.
 - con 3
 
 ### Pros of GitHub Projects
-- Pro 1
-- Pro 2
-- Pro 3
+- GitHub Projects is already linked to GitHub and requires no external installation steps or tools
+- GitHub Projects enables users to create their own personalized views for their tasks
+- GitHub Projects allows issues to contain sub-issues, contributing to a well-organized project
 
 ### Cons of GitHub Projects
-- Con 1
-- Con 2
-- Con 3
+- GitHub Projects has a lot of features that create a steep learning curve
+- GitHub Projects only works with GitHub and could not be used with other platforms
+- GitHub Projects does not have a time-tracking or logging feature
 
 ## Tool Chosen
 Github Projects
 
 ## Rationale
-Write one paragraph rationale here.
+Our group initially tried to use Jira for this project, but were unable to connect it to our repository due to permission restrictions. As a result, we switched to GitHub Projects and decided to use it throughout the project. GitHub Projects was already integrated with our repository and was immediately accessible to all group-members. Also, its support for issues and sub-issues allowed us to organize and track our work effectively.
 
 ## Jira or GitHub Project link
 [Project link](url)
