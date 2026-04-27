@@ -56,9 +56,9 @@ Our group initially tried to use Jira for this project, but were unable to conne
 
 | # | Title       | Feature Branch | Assigned To | Story Points | Date Started | Date Completed
 |---|-------------|-----------------|-------------|---------------|-------------|---------------
-|[#3](url)|As a speedgolfer, I want to store my speedscore information in an account so that I can keep all my speedgolf information in one location | `feature/account_management` | Chris | x | 4/25/25 | 4/25/25
-|[#10](url)|Testing: As a SpeedScore stakeholder, I want the codebase to be well-tested and bug-free so the browsing experience is consistent and positive | `feature/tests` | Savannah Tanner | x | 4/25/2026 | 4/25/2026
-|[#1]()|As a speedgolfer, I want to track my rounds of speedgolf so that I can see my improvement over time | `feature/rounds-modes` | Adrien Protzel | x | 4/25/25 | 4/25/25
+|[#3](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-team-3/issues/3)|As a speedgolfer, I want to store my speedscore information in an account so that I can keep all my speedgolf information in one location | `feature/account_management` | Chris | 3 | 4/25/25 | 4/25/25
+|[#10](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-team-3/issues/10)|Testing: As a SpeedScore stakeholder, I want the codebase to be well-tested and bug-free so the browsing experience is consistent and positive | `feature/tests` | Savannah Tanner | 3 | 4/25/2026 | 4/25/2026
+|[#1](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-team-3/issues/1)|As a speedgolfer, I want to track my rounds of speedgolf so that I can see my improvement over time | `feature/rounds-modes` | Adrien Protzel | 5 | 4/25/25 | 4/25/25
 |[#24](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-team-3/issues/24)|As a speedgolfer, I want to be able to personalize my profile and share with others. | `feature/edit-profile` | Kyle Noble | 3 | 4/25/26 | 4/25/26
 |[#11](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-team-3/issues/11)|As a speedscore user, I want to be able to move around the website with my mouse so that I can explore pages | `feature/click-handling` | Alex Bruzda | 2 | 4/23/2026 | 4/25/2026
 
