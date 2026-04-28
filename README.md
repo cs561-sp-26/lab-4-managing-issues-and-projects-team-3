@@ -64,4 +64,4 @@ Our group initially tried to use Jira for this project, but were unable to conne
 
 
 ## Read.ai Planning Poker Meeting Report Link
-[Project link](url)
+[Meeting summary based on transcript](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-team-3/blob/main/meeting_summary.md)
